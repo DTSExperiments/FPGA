@@ -39,7 +39,7 @@ entity flySimulator is Port(
     hdmi_tx_n: out std_logic_vector (2 downto 0);
     hdmi_tx_p: out std_logic_vector (2 downto 0);
     LED: out std_logic_vector (7 downto 0):=(others => '0');
-    ja: out std_logic_vector(1 downto 0):=(others => '0');
+    ja: out std_logic_vector(7 downto 0):=(others => '0');
     xadc_p		   : in std_logic;
     xadc_n         : in std_logic;
     vauxp1    : in std_logic;
@@ -80,6 +80,22 @@ component pwm is port(
         rst     : in  STD_LOGIC;
         duty    : in  integer range 0 to 255;
         pwm_out : out STD_LOGIC);
+end component;
+
+component SPI_Master is port(
+        clk: in std_logic;             -- system clock
+        rst: in std_logic;             -- system reset
+        start: in std_logic;           -- start SPI transfer
+
+        -- SPI signals
+        sclk_out: out std_logic;           -- serial clock
+        mosi_out: out std_logic;           -- master out, slave in
+        miso_in: in std_logic;            -- master in, slave out
+        ss_out: out std_logic;             -- slave select
+
+        data_to_send: in std_logic_vector(15 downto 0); -- data to be sent
+        data_received: out std_logic_vector(15 downto 0) -- received data
+    );
 end component;
 
 component clockDivider is
@@ -169,6 +185,15 @@ component xadc_wiz_0 is port(
         vp_in           : in  STD_LOGIC;                         -- Dedicated Analog Input Pair
         vn_in           : in  STD_LOGIC);
 end component;
+-- SPI
+signal spi_start: std_logic:='0';           -- start SPI transfer
+signal sclk: std_logic:='0';           -- serial clock
+signal mosi: std_logic:='0';           -- master out, slave in
+signal miso: std_logic:='0';            -- master in, slave out
+signal ss: std_logic:='0';             -- slave select
+
+signal data_to_send: STD_LOGIC_VECTOR(15 downto 0); -- data to be sent
+signal data_received: STD_LOGIC_VECTOR(15 downto 0); -- received data
 
 -- Clk
 signal clk_out: std_logic:='0';
@@ -181,7 +206,7 @@ signal pwmSignal: std_logic:='0';
 
 -- open loop rotation
 signal integer_rotate_speed: integer range 0 to 255:= 0;
-signal uart_integer_rotate_speed: integer range 0 to 255:= 1;
+signal uart_integer_rotate_speed: integer range 0 to 255:= 0;
 signal uart_integer_pwm_speed: integer range 0 to 255:= 128;
 
 -- Video
@@ -294,7 +319,7 @@ rxByteUart0: rxByteUart
 pll0: clk_wiz_0 port map(
     clk_in1 => CLK,
     clk_out1 => clk_out,
-    reset => '0');
+    reset => rstSignal);
     
 rgb2dvi: rgb2dvi_0 port map(
         PixelClk => clk_out,
@@ -303,7 +328,7 @@ rgb2dvi: rgb2dvi_0 port map(
         vid_pVSync => vid_Vsync,
 --        vid_pVDE => '1',
         vid_pVDE => vid_VDE,
-        aRst => '0',
+        aRst => rstSignal,
         TMDS_Clk_n => hdmi_tx_clk_n,
         TMDS_Clk_p => hdmi_tx_clk_p,
         TMDS_Data_n => hdmi_tx_n,
@@ -370,16 +395,40 @@ xadc: xadc_wiz_0 port map(
         vp_in        => xadc_p,
         vn_in        => xadc_n); 
         
+SPI_Master0: SPI_Master port map(
+        clk => clk_out,
+        rst => rstSignal,
+        start => spi_start,
+
+        -- SPI signals
+        sclk_out => sclk,
+        mosi_out => mosi,
+        miso_in => miso,
+        ss_out => ss,
+
+        data_to_send => data_to_send,
+        data_received => data_received
+        );
+        
 process begin
 
 --LED(7 downto 0) <= std_logic_vector(to_unsigned(integer_rotate_speed, 8));
 LED(1) <= timeout_flag;
 LED(0) <= pwmOnOff and pwmSignal;
-ja(0) <= pwmOnOff and pwmSignal;
+--ja(0) <= pwmOnOff and pwmSignal;
+ja(0) <= sclk;
+ja(1) <= mosi;
+ja(4) <= ss;
+data_to_send <= x"0C70";
 
 wait until rising_edge(clk_out);
 
-
+-- ####################### SPI #############################
+if (frame = '1') then
+    spi_start <= '1';
+else
+    spi_start <= '0';
+end if;
 
 -- ####################### Calculate frame uart ########################### 
     if (drdy_xadc = '1') and (si_state = 0) and (frame = '0') and (si_calc_uart = 0) then
@@ -409,35 +458,37 @@ wait until rising_edge(clk_out);
     end if;
     
     if (si_state = 1) then
-         uart_start_in <= '0';
-         si_state <= 2;
+        --spi_start <= '1';
+        uart_start_in <= '0';
+        si_state <= 2;
     else
     end if;
      
     if ((ready_out = '1') and (si_state = 2)) then
-         uart_byte_in(3 downto 0) <= std_logic_vector(uart_do_xadc(15 downto 12));
-         uart_byte_in(7 downto 4) <= x"0";
-         uart_start_in <= '1';
-         si_state <= 3;
+        uart_byte_in(3 downto 0) <= std_logic_vector(uart_do_xadc(15 downto 12));
+        uart_byte_in(7 downto 4) <= x"0";
+        uart_start_in <= '1';
+        si_state <= 3;
      else
      end if;
      
     if (si_state = 3) then
-         uart_start_in <= '0';
-         si_state <= 4;
+        --spi_start <= '0';
+        uart_start_in <= '0';
+        si_state <= 4;
     else
     end if;
      
      if ((ready_out = '1') and (si_state = 4)) then
-         uart_byte_in <= std_logic_vector(value_pixel(7 downto 0));
-         uart_start_in <= '1';
-         si_state <= 5;
+        uart_byte_in <= std_logic_vector(value_pixel(7 downto 0));
+        uart_start_in <= '1';
+        si_state <= 5;
      else
      end if;
      
     if (si_state = 5) then
-         uart_start_in <= '0';
-         si_state <= 6;
+        uart_start_in <= '0';
+        si_state <= 6;
     else
     end if;
      
@@ -667,9 +718,9 @@ end if;
         
         if (si_state_ad_frame = 8) then
             if (si_ad_value_sign = '0') then
-                si_value_pixel <= si_value_pixel + si_ad_value_picture;
+                si_value_pixel <= si_value_pixel + si_ad_value_picture*integer_rotate_speed;
             else
-                si_value_pixel <= si_value_pixel - si_ad_value_picture;
+                si_value_pixel <= si_value_pixel - si_ad_value_picture*integer_rotate_speed;
             end if; 
         si_state_ad_frame <= 9;       
         else

@@ -144,7 +144,7 @@ begin
 
  U0 : XADC
      generic map(
-        INIT_40 => X"0011", -- config reg 0
+        INIT_40 => X"0411", -- config reg 0
         INIT_41 => X"31AF", -- config reg 1
         INIT_42 => X"1000", -- config reg 2
         INIT_48 => X"0100", -- Sequencer channel selection
