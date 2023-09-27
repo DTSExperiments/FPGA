@@ -717,12 +717,23 @@ end if;
         end if; 
         
         if (si_state_ad_frame = 8) then
-            if (si_ad_value_sign = '0') then
-                si_value_pixel <= si_value_pixel + si_ad_value_picture*integer_rotate_speed;
-            else
-                si_value_pixel <= si_value_pixel - si_ad_value_picture*integer_rotate_speed;
-            end if; 
-        si_state_ad_frame <= 9;       
+            case si_rotate_screen is
+                when "00" =>
+                    if (si_ad_value_sign = '0') then
+                        si_value_pixel <= si_value_pixel + si_ad_value_picture*integer_rotate_speed;
+                    else
+                        si_value_pixel <= si_value_pixel - si_ad_value_picture*integer_rotate_speed;
+                    end if; 
+                    si_state_ad_frame <= 9;
+                when "01" =>
+                    si_value_pixel <= si_value_pixel + integer_rotate_speed;
+                    si_state_ad_frame <= 9;   
+                when "10" =>
+                    si_value_pixel <= si_value_pixel - integer_rotate_speed;
+                    si_state_ad_frame <= 9;  
+                when others => 
+                    si_state_ad_frame <= 0;
+            end case;    
         else
         end if; 
         
