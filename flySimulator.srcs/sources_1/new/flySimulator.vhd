@@ -257,7 +257,8 @@ signal si_ad_value_bit: std_logic_vector(11 downto 0):= (others => '0');
 signal si_ad_calc_picture: integer range 0 to 4095:= 0;
 signal si_ad_value_multi: integer range 0 to 4095:= 0;
 signal si_ad_value_picture: integer range 0 to 4095:= 0;
-signal si_value_pixel: integer range -2048 to 2047:= 0;
+signal si_value_pixel: real := 0.0;
+--signal si_value_pixel: integer range -2048 to 2047:= 0;
 
 -- UART
 signal uart_start_in:std_logic:= '0';
@@ -720,16 +721,20 @@ end if;
             case si_rotate_screen is
                 when "00" =>
                     if (si_ad_value_sign = '0') then
-                        si_value_pixel <= si_value_pixel + si_ad_value_picture*integer_rotate_speed;
+                        si_value_pixel <= si_value_pixel - real(si_ad_value_picture*integer_rotate_speed)*0.5;
+                        --si_value_pixel <= si_value_pixel - si_ad_value_picture*integer_rotate_speed;
                     else
-                        si_value_pixel <= si_value_pixel - si_ad_value_picture*integer_rotate_speed;
+                        si_value_pixel <= si_value_pixel + real(si_ad_value_picture*integer_rotate_speed)*0.5;
+                        --si_value_pixel <= si_value_pixel + si_ad_value_picture*integer_rotate_speed;
                     end if; 
                     si_state_ad_frame <= 9;
                 when "01" =>
-                    si_value_pixel <= si_value_pixel + integer_rotate_speed;
+                    si_value_pixel <= si_value_pixel + real(integer_rotate_speed)*0.5;
+                    --si_value_pixel <= si_value_pixel + integer_rotate_speed;
                     si_state_ad_frame <= 9;   
                 when "10" =>
-                    si_value_pixel <= si_value_pixel - integer_rotate_speed;
+                    si_value_pixel <= si_value_pixel - real(integer_rotate_speed)*0.5;
+                    --si_value_pixel <= si_value_pixel - integer_rotate_speed;
                     si_state_ad_frame <= 9;  
                 when others => 
                     si_state_ad_frame <= 0;
@@ -739,7 +744,7 @@ end if;
         
         if (si_state_ad_frame = 9) then
             if (si_value_pixel > 799) then
-                si_value_pixel <= si_value_pixel - 800;
+                si_value_pixel <= to_unsigned(to_integer(si_value_pixel)) - 800;
             else
                 if (si_value_pixel < 0) then
                     si_value_pixel <= 800 + si_value_pixel;
@@ -751,7 +756,7 @@ end if;
         end if;  
         
         if (si_state_ad_frame = 10) then
-            value_pixel <= std_logic_vector(to_signed(si_value_pixel,12));
+            value_pixel <= std_logic_vector(to_signed(to_integer(si_value_pixel),12));
             si_state_ad_frame <= 0;       
         else
         end if;            

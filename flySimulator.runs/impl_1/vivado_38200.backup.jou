@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Sep 28 15:49:53 2023
+# Process ID: 38200
+# Current directory: D:/flySimulator/flySimulator.runs/impl_1
+# Command line: vivado.exe -log flySimulator.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source flySimulator.tcl -notrace
+# Log file: D:/flySimulator/flySimulator.runs/impl_1/flySimulator.vdi
+# Journal file: D:/flySimulator/flySimulator.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source flySimulator.tcl -notrace
