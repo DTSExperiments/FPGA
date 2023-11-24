@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date             : Thu Sep 28 16:15:43 2023
+| Date             : Thu Nov 16 14:18:23 2023
 | Host             : PC1012002888 running 64-bit major release  (build 9200)
 | Command          : report_power -file flySimulator_power_routed.rpt -pb flySimulator_power_summary_routed.pb -rpx flySimulator_power_routed.rpx
 | Design           : flySimulator
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.870        |
+| Total On-Chip Power (W)  | 0.951        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.725        |
+| Dynamic (W)              | 0.806        |
 | Device Static (W)        | 0.145        |
 | Effective TJA (C/W)      | 3.3          |
-| Max Ambient (C)          | 82.1         |
-| Junction Temperature (C) | 27.9         |
+| Max Ambient (C)          | 81.8         |
+| Junction Temperature (C) | 28.2         |
 | Confidence Level         | Medium       |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -53,20 +53,21 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.009 |       16 |       --- |             --- |
-| Slice Logic    |     0.133 |    33342 |       --- |             --- |
-|   LUT as Logic |     0.133 |    27369 |    133800 |           20.46 |
-|   Register     |    <0.001 |     3133 |    267600 |            1.17 |
-|   CARRY4       |    <0.001 |       54 |     33450 |            0.16 |
-|   F7/F8 Muxes  |    <0.001 |      161 |    133800 |            0.12 |
+| Slice Logic    |     0.157 |    30619 |       --- |             --- |
+|   LUT as Logic |     0.157 |    25831 |    133800 |           19.31 |
+|   CARRY4       |    <0.001 |      287 |     33450 |            0.86 |
+|   F7/F8 Muxes  |    <0.001 |      157 |    133800 |            0.12 |
+|   Register     |    <0.001 |     2996 |    267600 |            1.12 |
 |   Others       |     0.000 |      261 |       --- |             --- |
-| Signals        |     0.237 |    32475 |       --- |             --- |
-| Block RAM      |     0.027 |       56 |       365 |           15.34 |
+| Signals        |     0.295 |    29707 |       --- |             --- |
+| Block RAM      |     0.023 |       56 |       365 |           15.34 |
 | MMCM           |     0.085 |        1 |        10 |           10.00 |
 | PLL            |     0.098 |        1 |        10 |           10.00 |
-| I/O            |     0.135 |       29 |       285 |           10.18 |
+| DSPs           |    <0.001 |        2 |       740 |            0.27 |
+| I/O            |     0.136 |       29 |       285 |           10.18 |
 | XADC           |    <0.001 |        1 |       --- |             --- |
 | Static Power   |     0.145 |          |           |                 |
-| Total          |     0.870 |          |           |                 |
+| Total          |     0.951 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,8 +77,8 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.449 |       0.415 |      0.035 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.127 |       0.097 |      0.031 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.529 |       0.494 |      0.035 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.128 |       0.097 |      0.031 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.046 |       0.041 |      0.005 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -85,7 +86,7 @@ Table of Contents
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vccbram   |       1.000 |     0.005 |       0.002 |      0.002 |       NA    | Unspecified | NA         |
+| Vccbram   |       1.000 |     0.004 |       0.002 |      0.002 |       NA    | Unspecified | NA         |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |       NA    | Unspecified | NA         |
@@ -158,20 +159,20 @@ Table of Contents
 +--------------------------------------+-----------+
 | Name                                 | Power (W) |
 +--------------------------------------+-----------+
-| flySimulator                         |     0.725 |
-|   blk_mem                            |     0.028 |
-|     U0                               |     0.028 |
-|       inst_blk_mem_gen               |     0.028 |
+| flySimulator                         |     0.806 |
+|   blk_mem                            |     0.024 |
+|     U0                               |     0.024 |
+|       inst_blk_mem_gen               |     0.024 |
 |   pll0                               |     0.099 |
 |     inst                             |     0.099 |
-|   rgb2dvi                            |     0.221 |
-|     U0                               |     0.221 |
+|   rgb2dvi                            |     0.222 |
+|     U0                               |     0.222 |
 |       ClockGenInternal.ClockGenX     |     0.085 |
 |       ClockSerializer                |     0.033 |
 |       DataEncoders[0].DataSerializer |     0.034 |
 |       DataEncoders[1].DataSerializer |     0.034 |
 |       DataEncoders[2].DataSerializer |     0.034 |
-|   vga0                               |     0.001 |
+|   vga0                               |     0.002 |
 +--------------------------------------+-----------+
 
 

@@ -51,6 +51,8 @@ end flySimulator;
 
 architecture Behavioral of flySimulator is
 
+constant SCALE_FACTOR : integer := 10;
+
 component clk_wiz_0 is port(
 	clk_in1 : in std_logic;
 	clk_out1 : out std_logic;
@@ -256,9 +258,14 @@ signal si_ad_value_sign: std_logic:= '0';
 signal si_ad_value_bit: std_logic_vector(11 downto 0):= (others => '0');
 signal si_ad_calc_picture: integer range 0 to 4095:= 0;
 signal si_ad_value_multi: integer range 0 to 4095:= 0;
-signal si_ad_value_picture: integer range 0 to 4095:= 0;
-signal si_value_pixel: real := 0.0;
+signal si_ad_value_picture: integer:= 0;
+signal si_value_pixel: integer:= 0;
+signal si_value_pixel_real: real := 0.0;
 --signal si_value_pixel: integer range -2048 to 2047:= 0;
+
+-- Assuming these are signals or variables
+signal scaled_operation : integer;
+signal si_value_pixel_scaled : integer := si_value_pixel * SCALE_FACTOR; -- Scaled version
 
 -- UART
 signal uart_start_in:std_logic:= '0';
@@ -416,11 +423,11 @@ process begin
 --LED(7 downto 0) <= std_logic_vector(to_unsigned(integer_rotate_speed, 8));
 LED(1) <= timeout_flag;
 LED(0) <= pwmOnOff and pwmSignal;
---ja(0) <= pwmOnOff and pwmSignal;
-ja(0) <= sclk;
-ja(1) <= mosi;
-ja(4) <= ss;
-data_to_send <= x"0C70";
+ja(0) <= pwmOnOff and pwmSignal;
+--ja(0) <= sclk;
+--ja(1) <= mosi;
+--ja(4) <= ss;
+--data_to_send <= x"0C70";
 
 wait until rising_edge(clk_out);
 
@@ -608,9 +615,9 @@ if (si_state_frame = 1) and (si_state_vga = 7) then
 
             if (sig_sign = '0') then 
                 if (si_ad_value_sign = '0') and (si_ad_value_picture > 0) then
-                    si_ad_change_buffer <= std_logic_vector(rotate_right(unsigned(si_buffer), si_ad_value_picture*integer_rotate_speed));
+                    si_ad_change_buffer <= std_logic_vector(rotate_right(unsigned(si_buffer), ((si_ad_value_picture*integer_rotate_speed) / SCALE_FACTOR)));
                 else
-                    si_ad_change_buffer <= std_logic_vector(rotate_left(unsigned(si_buffer), si_ad_value_picture*integer_rotate_speed));
+                    si_ad_change_buffer <= std_logic_vector(rotate_left(unsigned(si_buffer), ((si_ad_value_picture*integer_rotate_speed) / SCALE_FACTOR)));
                 end if;
             else
             end if;
@@ -618,13 +625,13 @@ if (si_state_frame = 1) and (si_state_vga = 7) then
         mem_addra <= mem_addrb; 
         si_state_frame <= 2;
     when "01" =>
-        si_ad_change_buffer <= std_logic_vector(rotate_right(unsigned(si_buffer), integer_rotate_speed));
+        si_ad_change_buffer <= std_logic_vector(rotate_right(unsigned(si_buffer), (integer_rotate_speed / SCALE_FACTOR)));
         --insert switch buttons
         --si_ad_change_buffer <= std_logic_vector(rotate_right(unsigned(si_buffer), 10));
         mem_addra <= mem_addrb; 
         si_state_frame <= 2;   
     when "10" =>
-        si_ad_change_buffer <= std_logic_vector(rotate_left(unsigned(si_buffer), integer_rotate_speed));
+        si_ad_change_buffer <= std_logic_vector(rotate_left(unsigned(si_buffer), (integer_rotate_speed / SCALE_FACTOR)));
         --insert switch buttons
         --si_ad_change_buffer <= std_logic_vector(rotate_left(unsigned(si_buffer), 10));
         mem_addra <= mem_addrb; 
@@ -681,7 +688,8 @@ end if;
                 si_ad_calc_picture <= to_integer(unsigned(si_ad_value_bit));
                 si_state_ad_frame <= 4;
             else
-                si_ad_calc_picture <= to_integer(unsigned("111111111111" xor si_ad_value_bit)) + 1;
+                si_ad_calc_picture <= to_integer(unsigned(not si_ad_value_bit)) + 1;
+                --si_ad_calc_picture <= to_integer(unsigned("111111111111" xor si_ad_value_bit)) + 1;
                 si_state_ad_frame <= 4;
             end if;
         else
@@ -710,7 +718,8 @@ end if;
         
         if (si_state_ad_frame = 7) then
             if (si_ad_value_sign = '1') then
-                si_ad_value_diff <= to_integer(unsigned("1111111111111" xor std_logic_vector(to_unsigned(si_ad_value_diff,13)))) + 1;
+                si_ad_value_diff <= to_integer(unsigned(not std_logic_vector(to_unsigned(si_ad_value_diff, 13)))) + 1;
+                --si_ad_value_diff <= to_integer(unsigned("1111111111111" xor std_logic_vector(to_unsigned(si_ad_value_diff,13)))) + 1;
             else
             end if; 
         si_state_ad_frame <= 8;       
@@ -721,19 +730,23 @@ end if;
             case si_rotate_screen is
                 when "00" =>
                     if (si_ad_value_sign = '0') then
-                        si_value_pixel <= si_value_pixel - real(si_ad_value_picture*integer_rotate_speed)*0.5;
+                        si_value_pixel_scaled <= si_value_pixel_scaled - (si_ad_value_picture * integer_rotate_speed);
+                        --si_value_pixel_real <= real(si_value_pixel) - real((si_ad_value_picture*integer_rotate_speed)/10);
                         --si_value_pixel <= si_value_pixel - si_ad_value_picture*integer_rotate_speed;
                     else
-                        si_value_pixel <= si_value_pixel + real(si_ad_value_picture*integer_rotate_speed)*0.5;
+                        si_value_pixel_scaled <= si_value_pixel_scaled + (si_ad_value_picture * integer_rotate_speed);
+                        --si_value_pixel_real <= real(si_value_pixel) + real((si_ad_value_picture*integer_rotate_speed)/10);
                         --si_value_pixel <= si_value_pixel + si_ad_value_picture*integer_rotate_speed;
                     end if; 
                     si_state_ad_frame <= 9;
                 when "01" =>
-                    si_value_pixel <= si_value_pixel + real(integer_rotate_speed)*0.5;
+                    si_value_pixel_scaled <= si_value_pixel_scaled + integer_rotate_speed;
+                    --si_value_pixel_real <= real(si_value_pixel) + real((integer_rotate_speed)/10);
                     --si_value_pixel <= si_value_pixel + integer_rotate_speed;
                     si_state_ad_frame <= 9;   
                 when "10" =>
-                    si_value_pixel <= si_value_pixel - real(integer_rotate_speed)*0.5;
+                    si_value_pixel_scaled <= si_value_pixel_scaled - integer_rotate_speed;
+                    --si_value_pixel_real <= real(si_value_pixel) - real((integer_rotate_speed)/10);
                     --si_value_pixel <= si_value_pixel - integer_rotate_speed;
                     si_state_ad_frame <= 9;  
                 when others => 
@@ -742,24 +755,40 @@ end if;
         else
         end if; 
         
-        if (si_state_ad_frame = 9) then
-            if (si_value_pixel > 799) then
-                si_value_pixel <= to_unsigned(to_integer(si_value_pixel)) - 800;
-            else
-                if (si_value_pixel < 0) then
-                    si_value_pixel <= 800 + si_value_pixel;
-                else
-                end if;
-            end if; 
-        si_state_ad_frame <= 10;       
-        else
-        end if;  
+--        if (si_state_ad_frame = 9) then
+--            if (floor(si_value_pixel_real) > 799*) then
+--                si_value_pixel <= floor(si_value_pixel_real) - 800;
+--            else
+--                if (floor(si_value_pixel_real) < 0) then
+--                    si_value_pixel <= 800 + floor(si_value_pixel_real);
+--                else
+--                end if;
+--            end if; 
+--        si_state_ad_frame <= 10;       
+--        else
+--        end if;  
         
-        if (si_state_ad_frame = 10) then
-            value_pixel <= std_logic_vector(to_signed(to_integer(si_value_pixel),12));
-            si_state_ad_frame <= 0;       
+--        if (si_state_ad_frame = 10) then
+--            value_pixel <= std_logic_vector(to_signed(floor(si_value_pixel_real),12));
+--            si_state_ad_frame <= 0;       
+--        else
+--        end if;    
+
+    if (si_state_ad_frame = 9) then
+        if (si_value_pixel_scaled > 7990) then
+            si_value_pixel_scaled <= si_value_pixel_scaled - 8000;
         else
-        end if;            
+            if (si_value_pixel_scaled < 0) then
+                si_value_pixel_scaled <= 8000 + si_value_pixel_scaled;
+            end if;
+        end if; 
+        si_state_ad_frame <= 10;       
+    end if;  
+
+    if (si_state_ad_frame = 10) then
+        value_pixel <= std_logic_vector(to_signed((si_value_pixel_scaled / SCALE_FACTOR), 12)); -- Scale down when assigning
+        si_state_ad_frame <= 0;       
+    end if;        
 
 end process;        
 end Behavioral;
