@@ -420,9 +420,10 @@ SPI_Master0: SPI_Master port map(
         
 process begin
 
+LED(7 downto 0) <= std_logic_vector(to_unsigned(uart_integer_pwm_speed, 8));
 --LED(7 downto 0) <= std_logic_vector(to_unsigned(integer_rotate_speed, 8));
-LED(1) <= timeout_flag;
-LED(0) <= pwmOnOff and pwmSignal;
+--LED(1) <= timeout_flag;
+--LED(0) <= pwmOnOff and pwmSignal;
 ja(0) <= pwmOnOff and pwmSignal;
 --ja(0) <= sclk;
 --ja(1) <= mosi;

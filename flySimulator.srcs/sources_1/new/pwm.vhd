@@ -50,11 +50,15 @@ begin
             counter <= 0;
             pwm_out <= '0';
         elsif rising_edge(clk) then
-            counter <= counter + 1;
-            if counter < duty then
-                pwm_out <= '1';
+            if counter <= 255 then
+                counter <= counter + 1;
+                if counter < duty then
+                    pwm_out <= '1';
+                else
+                    pwm_out <= '0';
+                end if;
             else
-                pwm_out <= '0';
+                counter <= 0;
             end if;
         end if;
     end process;

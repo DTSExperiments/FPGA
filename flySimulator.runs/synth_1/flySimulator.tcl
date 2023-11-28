@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "D:/flySimulator/flySimulator.runs/synth_1/flySimulator.tcl"
+  variable script "C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.runs/synth_1/flySimulator.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,6 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 3
+set_param xicom.use_bs_reader 1
 set_msg_config  -id {Project 1-153}  -string {{WARNING: [Project 1-153] The current project device 'xc7a100tcsg324-1' does not match with the device on the 'DIGILENTINC.COM:NEXYS_VIDEO:PART0:1.2' board part. A device change to match the device on 'DIGILENTINC.COM:NEXYS_VIDEO:PART0:1.2' board part is being done. Please upgrade the IP in the project via the upgrade_ip command or by selecting Reports => Reports IP Status.}}  -suppress 
 set_msg_config  -id {Common 17-163}  -string {{ERROR: [Common 17-163] Missing value for option 'objects', please type 'upgrade_ip -help' for usage info.}}  -suppress 
 set_msg_config  -id {Place 30-575}  -string {{ERROR: [Place 30-575] Sub-optimal placement for a clock-capable IO pin and MMCM pair. If this sub optimal condition is acceptable for this design, you may use the CLOCK_DEDICATED_ROUTE constraint in the .xdc file to demote this message to a WARNING. However, the use of this override is highly discouraged. These examples can be used directly in the .xdc file to override this clock rule.
@@ -95,44 +97,43 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir D:/flySimulator/flySimulator.cache/wt [current_project]
-set_property parent.project_path D:/flySimulator/flySimulator.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.cache/wt [current_project]
+set_property parent.project_path C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property board_part digilentinc.com:nexys_video:part0:1.2 [current_project]
-set_property ip_repo_paths d:/vivado-library-master [current_project]
+set_property ip_repo_paths c:/Users/LocalAdmin/Documents/GitHub/vivado-library-master [current_project]
 update_ip_catalog
-set_property ip_output_repo d:/flySimulator/flySimulator.cache/ip [current_project]
+set_property ip_output_repo c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-add_files D:/flySimulator/mem_t_new.coe
+add_files C:/Users/LocalAdmin/Documents/GitHub/FPGA/mem_t_new.coe
 read_vhdl -library xil_defaultlib {
-  D:/flySimulator/flySimulator.srcs/sources_1/new/SPI_Master.vhd
-  D:/flySimulator/flySimulator.srcs/sources_1/new/clockDivider.vhd
-  D:/flySimulator/flySimulator.srcs/sources_1/new/pwm.vhd
-  D:/flySimulator/flySimulator.srcs/sources_1/new/rxByteUart.vhd
-  D:/flySimulator/flySimulator.srcs/sources_1/new/rxTxUart.vhd
-  D:/flySimulator/flySimulator.srcs/sources_1/new/vga_800.vhd
-  D:/flySimulator/flySimulator.srcs/sources_1/new/flySimulator.vhd
+  C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/SPI_Master.vhd
+  C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/clockDivider.vhd
+  C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/pwm.vhd
+  C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/rxByteUart.vhd
+  C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/rxTxUart.vhd
+  C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/vga_800.vhd
+  C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd
 }
-read_ip -quiet D:/flySimulator/flySimulator.srcs/sources_1/ip/xadc_wiz_0/xadc_wiz_0.xci
-set_property used_in_implementation false [get_files -all d:/flySimulator/flySimulator.srcs/sources_1/ip/xadc_wiz_0/xadc_wiz_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/flySimulator/flySimulator.srcs/sources_1/ip/xadc_wiz_0/xadc_wiz_0.xdc]
+read_ip -quiet C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/ip/xadc_wiz_0/xadc_wiz_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/xadc_wiz_0/xadc_wiz_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/xadc_wiz_0/xadc_wiz_0.xdc]
 
-read_ip -quiet D:/flySimulator/flySimulator.srcs/sources_1/ip/rgb2dvi_0/rgb2dvi_0.xci
-set_property used_in_implementation false [get_files -all d:/flySimulator/flySimulator.srcs/sources_1/ip/rgb2dvi_0/src/rgb2dvi.xdc]
-set_property used_in_implementation false [get_files -all d:/flySimulator/flySimulator.srcs/sources_1/ip/rgb2dvi_0/src/rgb2dvi_ooc.xdc]
-set_property used_in_implementation false [get_files -all d:/flySimulator/flySimulator.srcs/sources_1/ip/rgb2dvi_0/src/rgb2dvi_clocks.xdc]
+read_ip -quiet C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/ip/rgb2dvi_0/rgb2dvi_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi_ooc.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi_clocks.xdc]
 
-read_ip -quiet D:/flySimulator/flySimulator.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
-set_property used_in_implementation false [get_files -all d:/flySimulator/flySimulator.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
-set_property used_in_implementation false [get_files -all d:/flySimulator/flySimulator.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
-set_property used_in_implementation false [get_files -all d:/flySimulator/flySimulator.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
+read_ip -quiet C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
 
-read_ip -quiet D:/flySimulator/flySimulator.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
-set_property used_in_implementation false [get_files -all d:/flySimulator/flySimulator.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_ooc.xdc]
+read_ip -quiet C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -143,8 +144,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc D:/flySimulator/flySimulator.srcs/constrs_1/new/master.xdc
-set_property used_in_implementation false [get_files D:/flySimulator/flySimulator.srcs/constrs_1/new/master.xdc]
+read_xdc C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/constrs_1/new/master.xdc
+set_property used_in_implementation false [get_files C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/constrs_1/new/master.xdc]
 
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
@@ -154,6 +155,9 @@ close [open __synthesis_is_running__ w]
 OPTRACE "synth_design" START { }
 synth_design -top flySimulator -part xc7a200tsbg484-1
 OPTRACE "synth_design" END { }
+if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
+ send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"
+}
 
 
 OPTRACE "write_checkpoint" START { CHECKPOINT }

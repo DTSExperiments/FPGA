@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "D:/flySimulator/flySimulator.runs/impl_1/flySimulator.tcl"
+  variable script "C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.runs/impl_1/flySimulator.tcl"
   variable category "vivado_impl"
 }
 
@@ -112,6 +112,7 @@ proc step_failed { step } {
   set endFile ".$step.error.rst"
   set ch [open $endFile w]
   close $ch
+OPTRACE "impl_1" END { }
 }
 
 set_msg_config  -id {Project 1-153}  -string {{WARNING: [Project 1-153] The current project device 'xc7a100tcsg324-1' does not match with the device on the 'DIGILENTINC.COM:NEXYS_VIDEO:PART0:1.2' board part. A device change to match the device on 'DIGILENTINC.COM:NEXYS_VIDEO:PART0:1.2' board part is being done. Please upgrade the IP in the project via the upgrade_ip command or by selecting Reports => Reports IP Status.}}  -suppress 
@@ -133,21 +134,22 @@ set_msg_config  -id {Place 30-575}  -string {{ERROR: [Place 30-575] Sub-optimal 
 
 Resolution: A dedicated routing path between the two can be used if: (a) The clock-capable IO (CCIO) is placed on a CCIO capable site (b) The MMCM is placed in the same clock region as the CCIO pin. If the IOB is driving multiple MMCMs, all MMCMs must be placed in the same clock region, one clock region above or one clock region below the IOB. Both the above conditions must be met at the same time, else it may lead to longer and less predictable clock insertion delays.}}  -suppress 
 
-OPTRACE "Implementation" START { ROLLUP_1 }
+OPTRACE "impl_1" START { ROLLUP_1 }
 OPTRACE "Phase: Write Bitstream" START { ROLLUP_AUTO }
 OPTRACE "write_bitstream setup" START { }
 start_step write_bitstream
 set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
-  set_param chipscope.maxJobs 1
+  set_param chipscope.maxJobs 3
+  set_param xicom.use_bs_reader 1
   open_checkpoint flySimulator_routed.dcp
-  set_property webtalk.parent_dir D:/flySimulator/flySimulator.cache/wt [current_project]
+  set_property webtalk.parent_dir C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.cache/wt [current_project]
 set_property TOP flySimulator [current_fileset]
 OPTRACE "read constraints: write_bitstream" START { }
 OPTRACE "read constraints: write_bitstream" END { }
   set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
-  catch { write_mem_info -force flySimulator.mmi }
+  catch { write_mem_info -force -no_partial_mmi flySimulator.mmi }
 OPTRACE "write_bitstream setup" END { }
 OPTRACE "write_bitstream" START { }
   write_bitstream -force flySimulator.bit 
@@ -169,4 +171,4 @@ if {$rc} {
 
 OPTRACE "write_bitstream misc" END { }
 OPTRACE "Phase: Write Bitstream" END { }
-OPTRACE "Implementation" END { }
+OPTRACE "impl_1" END { }
