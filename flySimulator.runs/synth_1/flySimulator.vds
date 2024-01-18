@@ -2,15 +2,16 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Tue Nov 28 10:03:37 2023
-# Process ID: 21788
+# Start of session at: Thu Jan 18 10:53:02 2024
+# Process ID: 22956
 # Current directory: C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.runs/synth_1
 # Command line: vivado.exe -log flySimulator.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source flySimulator.tcl
 # Log file: C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.runs/synth_1/flySimulator.vds
 # Journal file: C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.runs/synth_1\vivado.jou
-# Running On: PC1022350269, OS: Windows, CPU Frequency: 2296 MHz, CPU Physical cores: 12, Host memory: 15919 MB
+# Running On: PC1022350269, OS: Windows, CPU Frequency: 2296 MHz, CPU Physical cores: 12, Host memory: 41689 MB
 #-----------------------------------------------------------
 source flySimulator.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 423.512 ; gain = 71.480
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/LocalAdmin/Documents/GitHub/vivado-library-master'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.2/data/ip'.
@@ -21,10 +22,10 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200
 INFO: [Device 21-403] Loading part xc7a200tsbg484-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 37428
+INFO: [Synth 8-7075] Helper process launched with PID 6384
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1280.086 ; gain = 407.168
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1307.043 ; gain = 406.770
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'flySimulator' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:52]
 INFO: [Synth 8-3491] module 'blk_mem_gen_0' declared at 'c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/blk_mem_gen_0/synth/blk_mem_gen_0.vhd:59' bound to instance 'blk_mem' of component 'blk_mem_gen_0' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:299]
@@ -362,18 +363,18 @@ WARNING: [Synth 8-7129] Port DOUTA_I[706] in module blk_mem_output_block is eith
 WARNING: [Synth 8-7129] Port DOUTA_I[705] in module blk_mem_output_block is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:42 ; elapsed = 00:01:11 . Memory (MB): peak = 1860.125 ; gain = 987.207
+Finished RTL Elaboration : Time (s): cpu = 00:00:38 ; elapsed = 00:00:59 . Memory (MB): peak = 1935.055 ; gain = 1034.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:42 ; elapsed = 00:01:11 . Memory (MB): peak = 1860.125 ; gain = 987.207
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:38 ; elapsed = 00:00:59 . Memory (MB): peak = 1935.055 ; gain = 1034.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:42 ; elapsed = 00:01:11 . Memory (MB): peak = 1860.125 ; gain = 987.207
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:38 ; elapsed = 00:00:59 . Memory (MB): peak = 1935.055 ; gain = 1034.781
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.523 . Memory (MB): peak = 1860.125 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.486 . Memory (MB): peak = 1935.055 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 65 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -404,21 +405,21 @@ Parsing XDC File [c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sou
 Finished Parsing XDC File [c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi_clocks.xdc] for cell 'rgb2dvi/U0'
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1860.125 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1935.055 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.122 . Memory (MB): peak = 1860.125 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.090 . Memory (MB): peak = 1935.055 ; gain = 0.000
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:57 ; elapsed = 00:01:26 . Memory (MB): peak = 1860.125 ; gain = 987.207
+Finished Constraint Validation : Time (s): cpu = 00:00:52 ; elapsed = 00:01:13 . Memory (MB): peak = 1935.055 ; gain = 1034.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a200tsbg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:57 ; elapsed = 00:01:26 . Memory (MB): peak = 1860.125 ; gain = 987.207
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:52 ; elapsed = 00:01:13 . Memory (MB): peak = 1935.055 ; gain = 1034.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -430,7 +431,7 @@ Applied set_property KEEP_HIERARCHY = SOFT for rgb2dvi. (constraint file  auto g
 Applied set_property KEEP_HIERARCHY = SOFT for pll0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for blk_mem. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:57 ; elapsed = 00:01:26 . Memory (MB): peak = 1860.125 ; gain = 987.207
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:52 ; elapsed = 00:01:13 . Memory (MB): peak = 1935.055 ; gain = 1034.781
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'si_state_uart_reg' in module 'rxByteUart'
 INFO: [Synth 8-802] inferred FSM for state register 'zustand_rcv_reg' in module 'rxTxUart'
@@ -475,7 +476,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'si_calc_uart_reg' using en
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'si_state_frame_reg' using encoding 'one-hot' in module 'flySimulator'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:01 ; elapsed = 00:01:30 . Memory (MB): peak = 1860.125 ; gain = 987.207
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:55 ; elapsed = 00:01:17 . Memory (MB): peak = 1935.055 ; gain = 1034.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -584,7 +585,7 @@ DSP Report: register COUNT is absorbed into DSP COUNT.
 DSP Report: operator COUNT is absorbed into DSP COUNT.
 DSP Report: operator COUNT is absorbed into DSP COUNT.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:45 ; elapsed = 00:02:16 . Memory (MB): peak = 1860.125 ; gain = 987.207
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:38 ; elapsed = 00:02:02 . Memory (MB): peak = 1935.055 ; gain = 1034.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -608,7 +609,7 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:54 ; elapsed = 00:02:25 . Memory (MB): peak = 1860.125 ; gain = 987.207
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:47 ; elapsed = 00:02:10 . Memory (MB): peak = 1935.055 ; gain = 1034.781
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
@@ -616,13 +617,13 @@ Start Timing Optimization
 info: optimization accepted worst group hill climbing move (-12825.0/oG. 3294.0ps)
 info: optimization accepted worst group hill climbing move (-13130.0/ToG.UNL 305.0ps)
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:04:30 ; elapsed = 00:05:02 . Memory (MB): peak = 2087.742 ; gain = 1214.824
+Finished Timing Optimization : Time (s): cpu = 00:04:07 ; elapsed = 00:04:32 . Memory (MB): peak = 2115.270 ; gain = 1214.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:04:46 ; elapsed = 00:05:18 . Memory (MB): peak = 2087.742 ; gain = 1214.824
+Finished Technology Mapping : Time (s): cpu = 00:04:25 ; elapsed = 00:04:50 . Memory (MB): peak = 2115.270 ; gain = 1214.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -640,37 +641,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:04:54 ; elapsed = 00:05:26 . Memory (MB): peak = 2087.742 ; gain = 1214.824
+Finished IO Insertion : Time (s): cpu = 00:04:32 ; elapsed = 00:04:57 . Memory (MB): peak = 2115.270 ; gain = 1214.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:04:54 ; elapsed = 00:05:26 . Memory (MB): peak = 2087.742 ; gain = 1214.824
+Finished Renaming Generated Instances : Time (s): cpu = 00:04:32 ; elapsed = 00:04:58 . Memory (MB): peak = 2115.270 ; gain = 1214.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:04:56 ; elapsed = 00:05:29 . Memory (MB): peak = 2087.742 ; gain = 1214.824
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:04:34 ; elapsed = 00:05:00 . Memory (MB): peak = 2115.270 ; gain = 1214.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:04:56 ; elapsed = 00:05:29 . Memory (MB): peak = 2087.742 ; gain = 1214.824
+Finished Renaming Generated Ports : Time (s): cpu = 00:04:34 ; elapsed = 00:05:00 . Memory (MB): peak = 2115.270 ; gain = 1214.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:04:58 ; elapsed = 00:05:30 . Memory (MB): peak = 2087.742 ; gain = 1214.824
+Finished Handling Custom Attributes : Time (s): cpu = 00:04:36 ; elapsed = 00:05:01 . Memory (MB): peak = 2115.270 ; gain = 1214.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:04:58 ; elapsed = 00:05:30 . Memory (MB): peak = 2087.742 ; gain = 1214.824
+Finished Renaming Generated Nets : Time (s): cpu = 00:04:36 ; elapsed = 00:05:01 . Memory (MB): peak = 2115.270 ; gain = 1214.996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -722,20 +723,20 @@ Report Cell Usage:
 |62    |OBUFDS     |     4|
 +------+-----------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:04:58 ; elapsed = 00:05:30 . Memory (MB): peak = 2087.742 ; gain = 1214.824
+Finished Writing Synthesis Report : Time (s): cpu = 00:04:36 ; elapsed = 00:05:01 . Memory (MB): peak = 2115.270 ; gain = 1214.996
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:04:07 ; elapsed = 00:05:23 . Memory (MB): peak = 2087.742 ; gain = 1214.824
-Synthesis Optimization Complete : Time (s): cpu = 00:04:58 ; elapsed = 00:05:32 . Memory (MB): peak = 2087.742 ; gain = 1214.824
+Synthesis Optimization Runtime : Time (s): cpu = 00:03:50 ; elapsed = 00:04:54 . Memory (MB): peak = 2115.270 ; gain = 1214.996
+Synthesis Optimization Complete : Time (s): cpu = 00:04:36 ; elapsed = 00:05:02 . Memory (MB): peak = 2115.270 ; gain = 1214.996
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.502 . Memory (MB): peak = 2087.742 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.439 . Memory (MB): peak = 2115.270 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 520 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 WARNING: [Netlist 29-101] Netlist 'flySimulator' is not ideal for floorplanning, since the cellview 'flySimulator' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-140] Inserted 2 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2087.742 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 2115.270 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
@@ -743,7 +744,7 @@ Synth Design complete, checksum: 5d4ddc3e
 INFO: [Common 17-83] Releasing license: Synthesis
 102 Infos, 108 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:05:09 ; elapsed = 00:05:43 . Memory (MB): peak = 2087.742 ; gain = 1652.188
+synth_design: Time (s): cpu = 00:04:45 ; elapsed = 00:05:12 . Memory (MB): peak = 2115.270 ; gain = 1649.715
 INFO: [Common 17-1381] The checkpoint 'C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.runs/synth_1/flySimulator.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file flySimulator_utilization_synth.rpt -pb flySimulator_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Nov 28 10:09:36 2023...
+INFO: [Common 17-206] Exiting Vivado at Thu Jan 18 10:58:27 2024...

@@ -1,4 +1,4 @@
--- (c) Copyright 1995-2023 Xilinx, Inc. All rights reserved.
+-- (c) Copyright 1995-2024 Xilinx, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
 -- of Xilinx, Inc. and is protected under U.S. and
@@ -45,9 +45,8 @@
 -- PART OF THIS FILE AT ALL TIMES.
 -- 
 -- DO NOT MODIFY THIS FILE.
-
 -- IP VLNV: xilinx.com:ip:blk_mem_gen:8.4
--- IP Revision: 4
+-- IP Revision: 5
 
 -- The following code must appear in the VHDL architecture header.
 
@@ -62,7 +61,7 @@ COMPONENT blk_mem_gen_0
     clkb : IN STD_LOGIC;
     enb : IN STD_LOGIC;
     addrb : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
-    doutb : OUT STD_LOGIC_VECTOR(799 DOWNTO 0)
+    doutb : OUT STD_LOGIC_VECTOR(799 DOWNTO 0) 
   );
 END COMPONENT;
 -- COMP_TAG_END ------ End COMPONENT Declaration ------------
@@ -88,4 +87,6 @@ your_instance_name : blk_mem_gen_0
 -- You must compile the wrapper file blk_mem_gen_0.vhd when simulating
 -- the core, blk_mem_gen_0. When compiling the wrapper file, be sure to
 -- reference the VHDL simulation library.
+
+
 
