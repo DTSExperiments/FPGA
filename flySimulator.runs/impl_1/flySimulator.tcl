@@ -142,6 +142,7 @@ set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
   set_param chipscope.maxJobs 3
+  set_param xicom.use_bs_reader 1
   open_checkpoint flySimulator_routed.dcp
   set_property webtalk.parent_dir C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.cache/wt [current_project]
 set_property TOP flySimulator [current_fileset]

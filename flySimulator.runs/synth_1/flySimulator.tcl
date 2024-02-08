@@ -70,6 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 3
+set_param xicom.use_bs_reader 1
 set_msg_config  -id {Project 1-153}  -string {{WARNING: [Project 1-153] The current project device 'xc7a100tcsg324-1' does not match with the device on the 'DIGILENTINC.COM:NEXYS_VIDEO:PART0:1.2' board part. A device change to match the device on 'DIGILENTINC.COM:NEXYS_VIDEO:PART0:1.2' board part is being done. Please upgrade the IP in the project via the upgrade_ip command or by selecting Reports => Reports IP Status.}}  -suppress 
 set_msg_config  -id {Common 17-163}  -string {{ERROR: [Common 17-163] Missing value for option 'objects', please type 'upgrade_ip -help' for usage info.}}  -suppress 
 set_msg_config  -id {Place 30-575}  -string {{ERROR: [Place 30-575] Sub-optimal placement for a clock-capable IO pin and MMCM pair. If this sub optimal condition is acceptable for this design, you may use the CLOCK_DEDICATED_ROUTE constraint in the .xdc file to demote this message to a WARNING. However, the use of this override is highly discouraged. These examples can be used directly in the .xdc file to override this clock rule.
