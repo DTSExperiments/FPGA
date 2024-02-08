@@ -10,7 +10,7 @@
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 
 source flySimulator.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 423.512 ; gain = 71.480
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 423.305 ; gain = 98.359
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/LocalAdmin/Documents/GitHub/vivado-library-master'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.2/data/ip'.
@@ -21,18 +21,18 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200
 INFO: [Device 21-403] Loading part xc7a200tsbg484-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 6384
+INFO: [Synth 8-7075] Helper process launched with PID 33448
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1307.043 ; gain = 406.770
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 1307.953 ; gain = 408.766
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_0' (0#1) [c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/blk_mem_gen_0/synth/blk_mem_gen_0.vhd:73]
 	Parameter TIMEOUT_THRESHOLD bound to: 40000000 - type: integer 
-INFO: [Synth 8-3491] module 'rxByteUart' declared at 'C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/rxByteUart.vhd:35' bound to instance 'rxByteUart0' of component 'rxByteUart' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:310]
+INFO: [Synth 8-3491] module 'rxByteUart' declared at 'C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/rxByteUart.vhd:35' bound to instance 'rxByteUart0' of component 'rxByteUart' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:314]
 INFO: [Synth 8-638] synthesizing module 'rxByteUart' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/rxByteUart.vhd:55]
 	Parameter TIMEOUT_THRESHOLD bound to: 40000000 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'rxByteUart' (0#1) [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/rxByteUart.vhd:55]
-INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.v:68' bound to instance 'pll0' of component 'clk_wiz_0' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:327]
+INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.v:68' bound to instance 'pll0' of component 'clk_wiz_0' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:331]
 INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.v:68]
 INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0_clk_wiz' [c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_clk_wiz.v:68]
 INFO: [Synth 8-6157] synthesizing module 'IBUF' [C:/Xilinx/Vivado/2022.2/scripts/rt/data/unisim_comp.v:71326]
@@ -53,7 +53,7 @@ INFO: [Synth 8-6157] synthesizing module 'BUFG' [C:/Xilinx/Vivado/2022.2/scripts
 INFO: [Synth 8-6155] done synthesizing module 'BUFG' (0#1) [C:/Xilinx/Vivado/2022.2/scripts/rt/data/unisim_comp.v:1082]
 INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0_clk_wiz' (0#1) [c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_clk_wiz.v:68]
 INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.v:68]
-INFO: [Synth 8-3491] module 'rgb2dvi_0' declared at 'c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/rgb2dvi_0/synth/rgb2dvi_0.vhd:56' bound to instance 'rgb2dvi' of component 'rgb2dvi_0' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:332]
+INFO: [Synth 8-3491] module 'rgb2dvi_0' declared at 'c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/rgb2dvi_0/synth/rgb2dvi_0.vhd:56' bound to instance 'rgb2dvi' of component 'rgb2dvi_0' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:336]
 INFO: [Synth 8-638] synthesizing module 'rgb2dvi_0' [c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/rgb2dvi_0/synth/rgb2dvi_0.vhd:71]
 	Parameter kGenerateSerialClk bound to: 1 - type: bool 
 	Parameter kClkPrimitive bound to: MMCM - type: string 
@@ -126,25 +126,25 @@ INFO: [Synth 8-638] synthesizing module 'TMDS_Encoder' [c:/Users/LocalAdmin/Docu
 INFO: [Synth 8-256] done synthesizing module 'TMDS_Encoder' (0#1) [c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/rgb2dvi_0/src/TMDS_Encoder.vhd:80]
 INFO: [Synth 8-256] done synthesizing module 'rgb2dvi' (0#1) [c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi.vhd:94]
 INFO: [Synth 8-256] done synthesizing module 'rgb2dvi_0' (0#1) [c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/rgb2dvi_0/synth/rgb2dvi_0.vhd:71]
-INFO: [Synth 8-3491] module 'vga_800' declared at 'C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/vga_800.vhd:5' bound to instance 'vga0' of component 'vga_800' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:345]
+INFO: [Synth 8-3491] module 'vga_800' declared at 'C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/vga_800.vhd:5' bound to instance 'vga0' of component 'vga_800' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:349]
 INFO: [Synth 8-638] synthesizing module 'vga_800' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/vga_800.vhd:20]
 INFO: [Synth 8-256] done synthesizing module 'vga_800' (0#1) [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/vga_800.vhd:20]
 	Parameter DIV_FACTOR bound to: 39062 - type: integer 
-INFO: [Synth 8-3491] module 'clockDivider' declared at 'C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/clockDivider.vhd:34' bound to instance 'clockDivider0' of component 'clockDivider' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:358]
+INFO: [Synth 8-3491] module 'clockDivider' declared at 'C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/clockDivider.vhd:34' bound to instance 'clockDivider0' of component 'clockDivider' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:362]
 INFO: [Synth 8-638] synthesizing module 'clockDivider' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/clockDivider.vhd:45]
 	Parameter DIV_FACTOR bound to: 39062 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'clockDivider' (0#1) [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/clockDivider.vhd:45]
-INFO: [Synth 8-3491] module 'pwm' declared at 'C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/pwm.vhd:34' bound to instance 'pwm0' of component 'pwm' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:366]
+INFO: [Synth 8-3491] module 'pwm' declared at 'C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/pwm.vhd:34' bound to instance 'pwm0' of component 'pwm' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:370]
 INFO: [Synth 8-638] synthesizing module 'pwm' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/pwm.vhd:43]
 INFO: [Synth 8-256] done synthesizing module 'pwm' (0#1) [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/pwm.vhd:43]
 	Parameter clk_freq bound to: 40000000 - type: integer 
 	Parameter baudrate bound to: 115200 - type: integer 
-INFO: [Synth 8-3491] module 'rxTxUart' declared at 'C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/rxTxUart.vhd:5' bound to instance 'uart0' of component 'rxTxUart' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:373]
+INFO: [Synth 8-3491] module 'rxTxUart' declared at 'C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/rxTxUart.vhd:5' bound to instance 'uart0' of component 'rxTxUart' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:377]
 INFO: [Synth 8-638] synthesizing module 'rxTxUart' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/rxTxUart.vhd:21]
 	Parameter clk_freq bound to: 40000000 - type: integer 
 	Parameter baudrate bound to: 115200 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'rxTxUart' (0#1) [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/rxTxUart.vhd:21]
-INFO: [Synth 8-3491] module 'xadc_wiz_0' declared at 'c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/xadc_wiz_0/xadc_wiz_0.vhd:55' bound to instance 'xadc' of component 'xadc_wiz_0' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:387]
+INFO: [Synth 8-3491] module 'xadc_wiz_0' declared at 'c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/xadc_wiz_0/xadc_wiz_0.vhd:55' bound to instance 'xadc' of component 'xadc_wiz_0' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:391]
 INFO: [Synth 8-638] synthesizing module 'xadc_wiz_0' [c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/xadc_wiz_0/xadc_wiz_0.vhd:78]
 	Parameter INIT_40 bound to: 16'b0000010000010001 
 	Parameter INIT_41 bound to: 16'b0011000110101111 
@@ -171,7 +171,7 @@ INFO: [Synth 8-638] synthesizing module 'xadc_wiz_0' [c:/Users/LocalAdmin/Docume
 	Parameter SIM_MONITOR_FILE bound to: design.txt - type: string 
 INFO: [Synth 8-113] binding component instance 'U0' to cell 'XADC' [c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/xadc_wiz_0/xadc_wiz_0.vhd:145]
 INFO: [Synth 8-256] done synthesizing module 'xadc_wiz_0' (0#1) [c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/xadc_wiz_0/xadc_wiz_0.vhd:78]
-INFO: [Synth 8-3491] module 'SPI_Master' declared at 'C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/SPI_Master.vhd:5' bound to instance 'SPI_Master0' of component 'SPI_Master' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:406]
+INFO: [Synth 8-3491] module 'SPI_Master' declared at 'C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/SPI_Master.vhd:5' bound to instance 'SPI_Master0' of component 'SPI_Master' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:410]
 INFO: [Synth 8-638] synthesizing module 'SPI_Master' [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/SPI_Master.vhd:25]
 INFO: [Synth 8-256] done synthesizing module 'SPI_Master' (0#1) [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/SPI_Master.vhd:25]
 INFO: [Synth 8-256] done synthesizing module 'flySimulator' (0#1) [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:52]
@@ -179,8 +179,8 @@ WARNING: [Synth 8-6014] Unused sequential element timeout_counter_reg was remove
 WARNING: [Synth 8-6014] Unused sequential element si_value_pixel_reg was removed.  [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/rxByteUart.vhd:137]
 WARNING: [Synth 8-6014] Unused sequential element uart_sig_sign_reg was removed.  [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/rxByteUart.vhd:146]
 WARNING: [Synth 8-3848] Net timeout_flag in module/entity rxByteUart does not have driver. [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/rxByteUart.vhd:51]
-WARNING: [Synth 8-6014] Unused sequential element value_ad_reg was removed.  [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:450]
-WARNING: [Synth 8-3848] Net data_to_send in module/entity flySimulator does not have driver. [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:197]
+WARNING: [Synth 8-6014] Unused sequential element value_ad_reg was removed.  [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:454]
+WARNING: [Synth 8-3848] Net data_to_send in module/entity flySimulator does not have driver. [C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd:200]
 WARNING: [Synth 8-7129] Port SerialClk in module TMDS_Encoder is either unconnected or has no load
 WARNING: [Synth 8-7129] Port aRst in module TMDS_Encoder is either unconnected or has no load
 WARNING: [Synth 8-7129] Port aRst_n in module rgb2dvi is either unconnected or has no load
@@ -283,18 +283,18 @@ WARNING: [Synth 8-7129] Port DOUTA_I[706] in module blk_mem_output_block is eith
 WARNING: [Synth 8-7129] Port DOUTA_I[705] in module blk_mem_output_block is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:38 ; elapsed = 00:00:59 . Memory (MB): peak = 1935.055 ; gain = 1034.781
+Finished RTL Elaboration : Time (s): cpu = 00:00:40 ; elapsed = 00:01:08 . Memory (MB): peak = 1936.434 ; gain = 1037.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:38 ; elapsed = 00:00:59 . Memory (MB): peak = 1935.055 ; gain = 1034.781
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:40 ; elapsed = 00:01:08 . Memory (MB): peak = 1936.434 ; gain = 1037.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:38 ; elapsed = 00:00:59 . Memory (MB): peak = 1935.055 ; gain = 1034.781
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:40 ; elapsed = 00:01:08 . Memory (MB): peak = 1936.434 ; gain = 1037.246
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.486 . Memory (MB): peak = 1935.055 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.568 . Memory (MB): peak = 1936.434 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 65 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -325,21 +325,21 @@ Parsing XDC File [c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sou
 Finished Parsing XDC File [c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi_clocks.xdc] for cell 'rgb2dvi/U0'
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1935.055 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1936.434 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.090 . Memory (MB): peak = 1935.055 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.098 . Memory (MB): peak = 1936.434 ; gain = 0.000
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:52 ; elapsed = 00:01:13 . Memory (MB): peak = 1935.055 ; gain = 1034.781
+Finished Constraint Validation : Time (s): cpu = 00:00:54 ; elapsed = 00:01:23 . Memory (MB): peak = 1936.434 ; gain = 1037.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a200tsbg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:52 ; elapsed = 00:01:13 . Memory (MB): peak = 1935.055 ; gain = 1034.781
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:54 ; elapsed = 00:01:23 . Memory (MB): peak = 1936.434 ; gain = 1037.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -351,7 +351,7 @@ Applied set_property KEEP_HIERARCHY = SOFT for rgb2dvi. (constraint file  auto g
 Applied set_property KEEP_HIERARCHY = SOFT for pll0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for blk_mem. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:52 ; elapsed = 00:01:13 . Memory (MB): peak = 1935.055 ; gain = 1034.781
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:54 ; elapsed = 00:01:23 . Memory (MB): peak = 1936.434 ; gain = 1037.246
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'si_state_uart_reg' in module 'rxByteUart'
 INFO: [Synth 8-802] inferred FSM for state register 'zustand_rcv_reg' in module 'rxTxUart'
@@ -396,7 +396,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'si_calc_uart_reg' using en
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'si_state_frame_reg' using encoding 'one-hot' in module 'flySimulator'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:55 ; elapsed = 00:01:17 . Memory (MB): peak = 1935.055 ; gain = 1034.781
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:59 ; elapsed = 00:01:28 . Memory (MB): peak = 1936.434 ; gain = 1037.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -505,7 +505,7 @@ DSP Report: register COUNT is absorbed into DSP COUNT.
 DSP Report: operator COUNT is absorbed into DSP COUNT.
 DSP Report: operator COUNT is absorbed into DSP COUNT.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:38 ; elapsed = 00:02:02 . Memory (MB): peak = 1935.055 ; gain = 1034.781
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:44 ; elapsed = 00:02:15 . Memory (MB): peak = 1936.434 ; gain = 1037.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -529,7 +529,7 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:47 ; elapsed = 00:02:10 . Memory (MB): peak = 1935.055 ; gain = 1034.781
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:53 ; elapsed = 00:02:24 . Memory (MB): peak = 1936.434 ; gain = 1037.246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
@@ -537,13 +537,13 @@ Start Timing Optimization
 info: optimization accepted worst group hill climbing move (-12825.0/oG. 3294.0ps)
 info: optimization accepted worst group hill climbing move (-13130.0/ToG.UNL 305.0ps)
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:04:07 ; elapsed = 00:04:32 . Memory (MB): peak = 2115.270 ; gain = 1214.996
+Finished Timing Optimization : Time (s): cpu = 00:04:25 ; elapsed = 00:04:58 . Memory (MB): peak = 2114.062 ; gain = 1214.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:04:25 ; elapsed = 00:04:50 . Memory (MB): peak = 2115.270 ; gain = 1214.996
+Finished Technology Mapping : Time (s): cpu = 00:04:41 ; elapsed = 00:05:14 . Memory (MB): peak = 2114.062 ; gain = 1214.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -561,37 +561,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:04:32 ; elapsed = 00:04:57 . Memory (MB): peak = 2115.270 ; gain = 1214.996
+Finished IO Insertion : Time (s): cpu = 00:04:48 ; elapsed = 00:05:22 . Memory (MB): peak = 2114.062 ; gain = 1214.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:04:32 ; elapsed = 00:04:58 . Memory (MB): peak = 2115.270 ; gain = 1214.996
+Finished Renaming Generated Instances : Time (s): cpu = 00:04:48 ; elapsed = 00:05:22 . Memory (MB): peak = 2114.062 ; gain = 1214.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:04:34 ; elapsed = 00:05:00 . Memory (MB): peak = 2115.270 ; gain = 1214.996
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:04:51 ; elapsed = 00:05:24 . Memory (MB): peak = 2114.062 ; gain = 1214.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:04:34 ; elapsed = 00:05:00 . Memory (MB): peak = 2115.270 ; gain = 1214.996
+Finished Renaming Generated Ports : Time (s): cpu = 00:04:51 ; elapsed = 00:05:24 . Memory (MB): peak = 2114.062 ; gain = 1214.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:04:36 ; elapsed = 00:05:01 . Memory (MB): peak = 2115.270 ; gain = 1214.996
+Finished Handling Custom Attributes : Time (s): cpu = 00:04:52 ; elapsed = 00:05:26 . Memory (MB): peak = 2114.062 ; gain = 1214.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:04:36 ; elapsed = 00:05:01 . Memory (MB): peak = 2115.270 ; gain = 1214.996
+Finished Renaming Generated Nets : Time (s): cpu = 00:04:52 ; elapsed = 00:05:26 . Memory (MB): peak = 2114.062 ; gain = 1214.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -643,20 +643,20 @@ Report Cell Usage:
 |62    |OBUFDS     |     4|
 +------+-----------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:04:36 ; elapsed = 00:05:01 . Memory (MB): peak = 2115.270 ; gain = 1214.996
+Finished Writing Synthesis Report : Time (s): cpu = 00:04:52 ; elapsed = 00:05:26 . Memory (MB): peak = 2114.062 ; gain = 1214.875
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:03:50 ; elapsed = 00:04:54 . Memory (MB): peak = 2115.270 ; gain = 1214.996
-Synthesis Optimization Complete : Time (s): cpu = 00:04:36 ; elapsed = 00:05:02 . Memory (MB): peak = 2115.270 ; gain = 1214.996
+Synthesis Optimization Runtime : Time (s): cpu = 00:04:03 ; elapsed = 00:05:18 . Memory (MB): peak = 2114.062 ; gain = 1214.875
+Synthesis Optimization Complete : Time (s): cpu = 00:04:52 ; elapsed = 00:05:27 . Memory (MB): peak = 2114.062 ; gain = 1214.875
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.439 . Memory (MB): peak = 2115.270 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.489 . Memory (MB): peak = 2114.062 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 520 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 WARNING: [Netlist 29-101] Netlist 'flySimulator' is not ideal for floorplanning, since the cellview 'flySimulator' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-140] Inserted 2 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 2115.270 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 2114.062 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
@@ -664,7 +664,7 @@ Synth Design complete, checksum: 5d4ddc3e
 INFO: [Common 17-83] Releasing license: Synthesis
 102 Infos, 108 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:04:45 ; elapsed = 00:05:12 . Memory (MB): peak = 2115.270 ; gain = 1649.715
+synth_design: Time (s): cpu = 00:05:02 ; elapsed = 00:05:46 . Memory (MB): peak = 2114.062 ; gain = 1649.504
 INFO: [Common 17-1381] The checkpoint 'C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.runs/synth_1/flySimulator.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file flySimulator_utilization_synth.rpt -pb flySimulator_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Jan 18 10:58:27 2024...
+INFO: [Common 17-206] Exiting Vivado at Thu Feb  8 10:40:26 2024...

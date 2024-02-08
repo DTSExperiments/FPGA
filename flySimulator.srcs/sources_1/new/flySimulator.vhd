@@ -187,6 +187,9 @@ component xadc_wiz_0 is port(
         vp_in           : in  STD_LOGIC;                         -- Dedicated Analog Input Pair
         vn_in           : in  STD_LOGIC);
 end component;
+
+constant mem_size : integer := 800; -- If you're rotating data row by row
+
 -- SPI
 signal spi_start: std_logic:='0';           -- start SPI transfer
 signal sclk: std_logic:='0';           -- serial clock
@@ -262,6 +265,7 @@ signal si_ad_value_picture: integer:= 0;
 signal si_value_pixel: integer:= 0;
 signal si_value_pixel_real: real := 0.0;
 --signal si_value_pixel: integer range -2048 to 2047:= 0;
+signal rotation_pointer : integer range 0 to mem_size-1 := 0; -- mem_size should match your memory size
 
 -- Assuming these are signals or variables
 signal scaled_operation : integer;
