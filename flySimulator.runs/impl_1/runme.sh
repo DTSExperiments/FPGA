@@ -42,6 +42,6 @@ EAStep()
 
 # pre-commands:
 /bin/touch .write_bitstream.begin.rst
-EAStep vivado -log flySimulator.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source flySimulator.tcl -notrace
+EAStep vivado -log nexys_hdmi.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source nexys_hdmi.tcl -notrace
 
 

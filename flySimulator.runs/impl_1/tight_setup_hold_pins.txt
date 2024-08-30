@@ -1,7 +1,0 @@
-+====================+====================+================================+
-| Launch Setup Clock | Launch Hold Clock  | Pin                            |
-+====================+====================+================================+
-| clk_out1_clk_wiz_0 | clk_out1_clk_wiz_0 | si_ad_change_buffer_reg[155]/D |
-| clk_out1_clk_wiz_0 | clk_out1_clk_wiz_0 | si_ad_change_buffer_reg[198]/D |
-| clk_out1_clk_wiz_0 | clk_out1_clk_wiz_0 | si_ad_change_buffer_reg[154]/D |
-+--------------------+--------------------+--------------------------------+

@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a200tsbg484-1" LaunchTime="1707403275">
-  <File Type="ROUTE-PWR" Name="flySimulator_power_routed.rpt"/>
-  <File Type="PA-TCL" Name="flySimulator.tcl"/>
-  <File Type="BITSTR-MMI" Name="flySimulator.mmi"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="flySimulator_methodology_drc_opted.rpt"/>
-  <File Type="INIT-TIMING" Name="flySimulator_timing_summary_init.rpt"/>
-  <File Type="ROUTE-PWR-SUM" Name="flySimulator_power_summary_routed.pb"/>
-  <File Type="REPORTS-TCL" Name="flySimulator_reports.tcl"/>
-  <File Type="OPT-TIMING" Name="flySimulator_timing_summary_opted.rpt"/>
-  <File Type="OPT-DCP" Name="flySimulator_opt.dcp"/>
-  <File Type="OPT-DRC" Name="flySimulator_drc_opted.rpt"/>
-  <File Type="OPT-HWDEF" Name="flySimulator.hwdef"/>
-  <File Type="PWROPT-DCP" Name="flySimulator_pwropt.dcp"/>
-  <File Type="PWROPT-DRC" Name="flySimulator_drc_pwropted.rpt"/>
-  <File Type="PWROPT-TIMING" Name="flySimulator_timing_summary_pwropted.rpt"/>
-  <File Type="PLACE-DCP" Name="flySimulator_placed.dcp"/>
-  <File Type="PLACE-IO" Name="flySimulator_io_placed.rpt"/>
-  <File Type="PLACE-CLK" Name="flySimulator_clock_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL" Name="flySimulator_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL-PB" Name="flySimulator_utilization_placed.pb"/>
-  <File Type="PLACE-CTRL" Name="flySimulator_control_sets_placed.rpt"/>
-  <File Type="PLACE-SIMILARITY" Name="flySimulator_incremental_reuse_placed.rpt"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="flySimulator_incremental_reuse_pre_placed.rpt"/>
-  <File Type="BG-BIN" Name="flySimulator.bin"/>
-  <File Type="PLACE-TIMING" Name="flySimulator_timing_summary_placed.rpt"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="flySimulator_postplace_pwropt.dcp"/>
-  <File Type="BITSTR-MSK" Name="flySimulator.msk"/>
-  <File Type="POSTPLACE-PWROPT-TIMING" Name="flySimulator_timing_summary_postplace_pwropted.rpt"/>
-  <File Type="PHYSOPT-DCP" Name="flySimulator_physopt.dcp"/>
-  <File Type="PHYSOPT-DRC" Name="flySimulator_drc_physopted.rpt"/>
-  <File Type="BITSTR-RBT" Name="flySimulator.rbt"/>
-  <File Type="PHYSOPT-TIMING" Name="flySimulator_timing_summary_physopted.rpt"/>
-  <File Type="ROUTE-ERROR-DCP" Name="flySimulator_routed_error.dcp"/>
-  <File Type="ROUTE-DCP" Name="flySimulator_routed.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="flySimulator_routed_bb.dcp"/>
-  <File Type="ROUTE-DRC" Name="flySimulator_drc_routed.rpt"/>
-  <File Type="ROUTE-DRC-PB" Name="flySimulator_drc_routed.pb"/>
-  <File Type="ROUTE-DRC-RPX" Name="flySimulator_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="flySimulator_methodology_drc_routed.rpt"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="flySimulator_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="flySimulator_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-PWR-RPX" Name="flySimulator_power_routed.rpx"/>
-  <File Type="ROUTE-STATUS" Name="flySimulator_route_status.rpt"/>
-  <File Type="ROUTE-STATUS-PB" Name="flySimulator_route_status.pb"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="flySimulator_timing_summary_routed.rpt"/>
-  <File Type="ROUTE-TIMING-PB" Name="flySimulator_timing_summary_routed.pb"/>
-  <File Type="ROUTE-TIMING-RPX" Name="flySimulator_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-SIMILARITY" Name="flySimulator_incremental_reuse_routed.rpt"/>
-  <File Type="ROUTE-CLK" Name="flySimulator_clock_utilization_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW" Name="flySimulator_bus_skew_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW-PB" Name="flySimulator_bus_skew_routed.pb"/>
-  <File Type="ROUTE-BUS-SKEW-RPX" Name="flySimulator_bus_skew_routed.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-DCP" Name="flySimulator_postroute_physopt.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="flySimulator_postroute_physopt_bb.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="flySimulator_timing_summary_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="flySimulator_timing_summary_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="flySimulator_timing_summary_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="flySimulator_bus_skew_postroute_physopted.rpt"/>
-  <File Type="BG-BIT" Name="flySimulator.bit"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="flySimulator_bus_skew_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="flySimulator_bus_skew_postroute_physopted.rpx"/>
-  <File Type="BITSTR-NKY" Name="flySimulator.nky"/>
-  <File Type="BITSTR-BMM" Name="flySimulator_bd.bmm"/>
-  <File Type="PDI-FILE" Name="flySimulator.pdi"/>
-  <File Type="RCFI_FILE" Name="flySimulator.rcfi"/>
-  <File Type="CFI_FILE" Name="flySimulator.cfi"/>
-  <File Type="RNPI_FILE" Name="flySimulator.rnpi"/>
-  <File Type="NPI_FILE" Name="flySimulator.npi"/>
-  <File Type="RBD_FILE" Name="flySimulator.rbd"/>
+<GenRun Id="impl_1" LaunchPart="xc7a200tsbg484-1" LaunchTime="1725045398">
+  <File Type="ROUTE-PWR" Name="nexys_hdmi_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="nexys_hdmi.tcl"/>
+  <File Type="BITSTR-MMI" Name="nexys_hdmi.mmi"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="nexys_hdmi_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="nexys_hdmi_timing_summary_init.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="nexys_hdmi_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="nexys_hdmi_reports.tcl"/>
+  <File Type="OPT-TIMING" Name="nexys_hdmi_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="nexys_hdmi_opt.dcp"/>
+  <File Type="OPT-DRC" Name="nexys_hdmi_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="nexys_hdmi.hwdef"/>
+  <File Type="PWROPT-DCP" Name="nexys_hdmi_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="nexys_hdmi_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="nexys_hdmi_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="nexys_hdmi_placed.dcp"/>
+  <File Type="PLACE-IO" Name="nexys_hdmi_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="nexys_hdmi_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="nexys_hdmi_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="nexys_hdmi_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="nexys_hdmi_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="nexys_hdmi_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="nexys_hdmi_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BIN" Name="nexys_hdmi.bin"/>
+  <File Type="PLACE-TIMING" Name="nexys_hdmi_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="nexys_hdmi_postplace_pwropt.dcp"/>
+  <File Type="BITSTR-MSK" Name="nexys_hdmi.msk"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="nexys_hdmi_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="nexys_hdmi_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="nexys_hdmi_drc_physopted.rpt"/>
+  <File Type="BITSTR-RBT" Name="nexys_hdmi.rbt"/>
+  <File Type="PHYSOPT-TIMING" Name="nexys_hdmi_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="nexys_hdmi_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="nexys_hdmi_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="nexys_hdmi_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="nexys_hdmi_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="nexys_hdmi_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="nexys_hdmi_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="nexys_hdmi_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="nexys_hdmi_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="nexys_hdmi_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="nexys_hdmi_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="nexys_hdmi_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="nexys_hdmi_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="nexys_hdmi_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="nexys_hdmi_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="nexys_hdmi_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="nexys_hdmi_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="nexys_hdmi_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="nexys_hdmi_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="nexys_hdmi_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="nexys_hdmi_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="nexys_hdmi_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="nexys_hdmi_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="nexys_hdmi_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="nexys_hdmi_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="nexys_hdmi_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="nexys_hdmi_bus_skew_postroute_physopted.rpt"/>
+  <File Type="BG-BIT" Name="nexys_hdmi.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="nexys_hdmi_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="nexys_hdmi_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-NKY" Name="nexys_hdmi.nky"/>
+  <File Type="BITSTR-BMM" Name="nexys_hdmi_bd.bmm"/>
+  <File Type="PDI-FILE" Name="nexys_hdmi.pdi"/>
+  <File Type="RCFI_FILE" Name="nexys_hdmi.rcfi"/>
+  <File Type="CFI_FILE" Name="nexys_hdmi.cfi"/>
+  <File Type="RNPI_FILE" Name="nexys_hdmi.rnpi"/>
+  <File Type="NPI_FILE" Name="nexys_hdmi.npi"/>
+  <File Type="RBD_FILE" Name="nexys_hdmi.rbd"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="flySimulator.ltx"/>
-  <File Type="BITSTR-SYSDEF" Name="flySimulator.sysdef"/>
-  <File Type="BG-BGN" Name="flySimulator.bgn"/>
-  <File Type="BG-DRC" Name="flySimulator.drc"/>
-  <File Type="RDI-RDI" Name="flySimulator.vdi"/>
+  <File Type="BITSTR-LTX" Name="nexys_hdmi.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="nexys_hdmi.sysdef"/>
+  <File Type="BG-BGN" Name="nexys_hdmi.bgn"/>
+  <File Type="BG-DRC" Name="nexys_hdmi.drc"/>
+  <File Type="RDI-RDI" Name="nexys_hdmi.vdi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
-  <File Type="ROUTE-RQS" Name="flySimulator_routed.rqs"/>
-  <File Type="POSTROUTE-PHYSOPT-RQS" Name="flySimulator_postroute_physopted.rqs"/>
+  <File Type="ROUTE-RQS" Name="nexys_hdmi_routed.rqs"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS" Name="nexys_hdmi_postroute_physopted.rqs"/>
   <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
@@ -109,25 +109,7 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/SPI_Master.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/clockDivider.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/pwm.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/rxByteUart.vhd">
+    <File Path="$PSRCDIR/sources_1/new/flySimulator.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -140,12 +122,6 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/vga_800.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/flySimulator.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -165,7 +141,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="flySimulator"/>
+      <Option Name="TopModule" Val="nexys_hdmi"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
@@ -187,7 +163,9 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020">
+      <Desc>Default settings for Implementation.</Desc>
+    </StratHandle>
     <Step Id="init_design"/>
     <Step Id="opt_design"/>
     <Step Id="power_opt_design"/>

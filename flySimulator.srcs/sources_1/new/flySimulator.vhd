@@ -15,7 +15,7 @@
 -- Revision:
 -- Revision 0.01 - File Created
 -- Additional Comments:
--- 800 x 600@60Hz Pixel clock 40Mhz
+-- 
 ----------------------------------------------------------------------------------
 
 
@@ -32,14 +32,14 @@ use ieee.numeric_std.all;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity flySimulator is Port(
+entity nexys_hdmi is Port(
     CLK: in std_logic;
     hdmi_tx_clk_n: out std_logic;
     hdmi_tx_clk_p: out std_logic;
     hdmi_tx_n: out std_logic_vector (2 downto 0);
     hdmi_tx_p: out std_logic_vector (2 downto 0);
     LED: out std_logic_vector (7 downto 0):=(others => '0');
-    ja: out std_logic_vector(7 downto 0):=(others => '0');
+    ja: out std_logic_vector(1 downto 0):=(others => '0');
     xadc_p		   : in std_logic;
     xadc_n         : in std_logic;
     vauxp1    : in std_logic;
@@ -47,67 +47,14 @@ entity flySimulator is Port(
     RsRx: in std_logic;
     RsTx: out std_logic
 );
-end flySimulator;
+end nexys_hdmi;
 
-architecture Behavioral of flySimulator is
-
-constant SCALE_FACTOR : integer := 10;
+architecture Behavioral of nexys_hdmi is
 
 component clk_wiz_0 is port(
 	clk_in1 : in std_logic;
 	clk_out1 : out std_logic;
 	reset: in std_logic);
-end component;
-
-component rxByteUart is 
-	Generic(
-	   TIMEOUT_THRESHOLD: integer);
-	Port (
-        clk     : in  STD_LOGIC;
-        rst     : in  STD_LOGIC;
-        uart_start_out    : in  STD_LOGIC;
-        uart_byte_out: in std_logic_vector(7 downto 0);
-        si_rotate_screen_uart : out STD_LOGIC_VECTOR(1 downto 0);
-        uart_vid_Data: out STD_LOGIC_VECTOR(23 downto 0);
-        uart_integer_rotate_speed: out integer range 0 to 255;
-        uart_integer_pwm_speed: out integer range 0 to 255;
-        uart_mem_offset: out integer range 0 to 4095;
-        uart_on_off: out std_logic;
-        pwmOnOff: out std_logic;
-        timeout_flag: out std_logic);
-end component;        
-
-component pwm is port(
-        clk     : in  STD_LOGIC;
-        rst     : in  STD_LOGIC;
-        duty    : in  integer range 0 to 255;
-        pwm_out : out STD_LOGIC);
-end component;
-
-component SPI_Master is port(
-        clk: in std_logic;             -- system clock
-        rst: in std_logic;             -- system reset
-        start: in std_logic;           -- start SPI transfer
-
-        -- SPI signals
-        sclk_out: out std_logic;           -- serial clock
-        mosi_out: out std_logic;           -- master out, slave in
-        miso_in: in std_logic;            -- master in, slave out
-        ss_out: out std_logic;             -- slave select
-
-        data_to_send: in std_logic_vector(15 downto 0); -- data to be sent
-        data_received: out std_logic_vector(15 downto 0) -- received data
-    );
-end component;
-
-component clockDivider is
-	Generic(
-	   DIV_FACTOR: integer);
-	Port (
-        clk_in  : in  STD_LOGIC;
-        rst     : in  STD_LOGIC;
-        clk_out : out STD_LOGIC
-    );
 end component;
 
 component vga_800 is port(
@@ -153,7 +100,7 @@ component blk_mem_gen_0 is port (
 end component;
 
 component rxTxUart is
-	Generic(
+	generic(
 	clk_freq: integer;
 	baudrate: integer);
 	Port (
@@ -188,31 +135,8 @@ component xadc_wiz_0 is port(
         vn_in           : in  STD_LOGIC);
 end component;
 
-constant mem_size : integer := 800; -- If you're rotating data row by row
-
--- SPI
-signal spi_start: std_logic:='0';           -- start SPI transfer
-signal sclk: std_logic:='0';           -- serial clock
-signal mosi: std_logic:='0';           -- master out, slave in
-signal miso: std_logic:='0';            -- master in, slave out
-signal ss: std_logic:='0';             -- slave select
-
-signal data_to_send: STD_LOGIC_VECTOR(15 downto 0); -- data to be sent
-signal data_received: STD_LOGIC_VECTOR(15 downto 0); -- received data
-
 -- Clk
 signal clk_out: std_logic:='0';
-signal clk_pwm: std_logic:='0';
-
--- PWM
-signal rstSignal: std_logic:='0';
-signal pwmOnOff: std_logic:='0';
-signal pwmSignal: std_logic:='0';
-
--- open loop rotation
-signal integer_rotate_speed: integer range 0 to 255:= 0;
-signal uart_integer_rotate_speed: integer range 0 to 255:= 0;
-signal uart_integer_pwm_speed: integer range 0 to 255:= 128;
 
 -- Video
 signal vid_Data: STD_LOGIC_VECTOR(23 downto 0):= (others => '1');
@@ -246,7 +170,6 @@ signal vid_screen_v_int: integer range 0 to 2047:= 0;
 
 -- adValue
 signal sig_sign: std_logic:='0';
-signal uart_sig_sign: std_logic:='0';
 
 -- rotate picture
 signal si_state_frame: integer range 0 to 7:= 0;
@@ -261,15 +184,8 @@ signal si_ad_value_sign: std_logic:= '0';
 signal si_ad_value_bit: std_logic_vector(11 downto 0):= (others => '0');
 signal si_ad_calc_picture: integer range 0 to 4095:= 0;
 signal si_ad_value_multi: integer range 0 to 4095:= 0;
-signal si_ad_value_picture: integer:= 0;
-signal si_value_pixel: integer:= 0;
-signal si_value_pixel_real: real := 0.0;
---signal si_value_pixel: integer range -2048 to 2047:= 0;
-signal rotation_pointer : integer range 0 to mem_size-1 := 0; -- mem_size should match your memory size
-
--- Assuming these are signals or variables
-signal scaled_operation : integer;
-signal si_value_pixel_scaled : integer := si_value_pixel * SCALE_FACTOR; -- Scaled version
+signal si_ad_value_picture: integer range 0 to 4095:= 0;
+signal si_value_pixel: integer range -2048 to 2047:= 0;
 
 -- UART
 signal uart_start_in:std_logic:= '0';
@@ -280,9 +196,9 @@ signal uart_byte_out, uart_byte_in: std_logic_vector(7 downto 0):=(others => '0'
 signal si_rotate_screen_uart: std_logic_vector(1 downto 0):= (others => '0');
 signal si_state_uart: integer range 0 to 7:= 0;
 signal uart_vid_Data: STD_LOGIC_VECTOR(23 downto 0):= (others => '1');
-signal timeout_flag: std_logic:= '0';
 
 -- AD Converter
+signal ad_trigger: std_logic:='0';
 signal eoc_xadc: std_logic:='0';
 signal eos_xadc: std_logic:='0';
 signal drdy_xadc: std_logic:='0';
@@ -310,28 +226,11 @@ blk_mem: blk_mem_gen_0 port map(
     enb => mem_enb,
     addrb => mem_addrb,
     doutb => mem_doutb);
-    
-rxByteUart0: rxByteUart 
-    GENERIC MAP(
-        TIMEOUT_THRESHOLD => 40000000) -- Frequenz ändern!!!!
-    port map(
-        clk => clk_out,
-        rst => rstSignal,
-        uart_start_out => uart_start_out,
-        uart_byte_out => uart_byte_out,
-        si_rotate_screen_uart => si_rotate_screen_uart,
-        uart_vid_Data => uart_vid_Data,
-        uart_integer_rotate_speed => uart_integer_rotate_speed,
-        uart_integer_pwm_speed => uart_integer_pwm_speed,
-        uart_mem_offset => uart_mem_offset,
-        uart_on_off => uart_on_off,
-        pwmOnOff => pwmOnOff,
-        timeout_flag => timeout_flag);
 
 pll0: clk_wiz_0 port map(
     clk_in1 => CLK,
     clk_out1 => clk_out,
-    reset => rstSignal);
+    reset => '0');
     
 rgb2dvi: rgb2dvi_0 port map(
         PixelClk => clk_out,
@@ -340,7 +239,7 @@ rgb2dvi: rgb2dvi_0 port map(
         vid_pVSync => vid_Vsync,
 --        vid_pVDE => '1',
         vid_pVDE => vid_VDE,
-        aRst => rstSignal,
+        aRst => '0',
         TMDS_Clk_n => hdmi_tx_clk_n,
         TMDS_Clk_p => hdmi_tx_clk_p,
         TMDS_Data_n => hdmi_tx_n,
@@ -358,35 +257,20 @@ vga0: vga_800 port map(
         vid_screen_v => vid_screen_v_int,
         vid_screen_h => vid_screen_h_int,
         frame_out => frame);
-       
-clockDivider0: clockDivider       
-        GENERIC MAP(
-        DIV_FACTOR => 39062) -- Clock Divider change f_clk / (256/f_blink) example 40 000 000 Hz / (256 * 4 Hz)!!!!
-        PORT MAP(
-        clk_in => clk_out,
-        rst => rstSignal,
-        clk_out => clk_pwm);  
         
-pwm0: pwm
-        port map(
-        clk => clk_pwm,
-        rst => rstSignal,
-        duty => uart_integer_pwm_speed,
-        pwm_out => pwmSignal);
-        
-uart0: rxTxUart
-        GENERIC MAP(
-        clk_freq => 40000000, -- Frequenz ändern!!!!
-        baudrate => 115200)
-        PORT MAP(
-        clk => clk_out,
-        ready => ready_out,
-        start_snd => uart_start_in,
-        start_rcv => uart_start_out,
-        tx => RsTx,
-        rx => RsRx,
-        byte_rcv => uart_byte_out,
-        byte_snd => uart_byte_in);       
+u0: rxTxUart
+                    GENERIC MAP(
+                    clk_freq => 40000000, -- Frequenz ändern!!!!
+                    baudrate => 115200)
+                    PORT MAP(
+                    clk => clk_out,
+                    ready => ready_out,
+                    start_snd => uart_start_in,
+                    start_rcv => uart_start_out,
+                    tx => RsTx,
+                    rx => RsRx,
+                    byte_rcv => uart_byte_out,
+                    byte_snd => uart_byte_in);       
 
 xadc: xadc_wiz_0 port map(
         daddr_in    => "0010001", -- 19,
@@ -407,40 +291,65 @@ xadc: xadc_wiz_0 port map(
         vp_in        => xadc_p,
         vn_in        => xadc_n); 
         
-SPI_Master0: SPI_Master port map(
-        clk => clk_out,
-        rst => rstSignal,
-        start => spi_start,
-
-        -- SPI signals
-        sclk_out => sclk,
-        mosi_out => mosi,
-        miso_in => miso,
-        ss_out => ss,
-
-        data_to_send => data_to_send,
-        data_received => data_received
-        );
-        
 process begin
-
-LED(7 downto 0) <= std_logic_vector(to_unsigned(uart_integer_pwm_speed, 8));
---LED(7 downto 0) <= std_logic_vector(to_unsigned(integer_rotate_speed, 8));
---LED(1) <= timeout_flag;
---LED(0) <= pwmOnOff and pwmSignal;
-ja(0) <= pwmOnOff and pwmSignal;
---ja(0) <= sclk;
---ja(1) <= mosi;
---ja(4) <= ss;
---data_to_send <= x"0C70";
 
 wait until rising_edge(clk_out);
 
--- ####################### SPI #############################
-if (frame = '1') then
-    spi_start <= '1';
+--##################################### UART Rx#################################################
+
+if (uart_start_out = '1') and (si_state_uart = 0) then
+    si_uart_byte <= to_integer(unsigned(uart_byte_out));
+    si_state_uart <= 1;
 else
-    spi_start <= '0';
+end if;
+
+if (si_state_uart = 1) then
+    case si_uart_byte is
+        when 115 =>
+            si_rotate_screen_uart <= "00";
+        when 108 =>
+            si_rotate_screen_uart <= "01";
+        when 114 =>
+            si_rotate_screen_uart <= "10";
+        when 66 =>
+            uart_vid_Data <= x"00FF00";
+        when 68 => 
+            uart_vid_Data <= x"00FFFF";
+        when 71 =>
+            uart_vid_Data <= x"0000FF";
+        when 87 =>
+            --Gray 50%
+            uart_vid_Data <= x"7F7F7F";
+            --uart_vid_Data <= (others => '1');
+        when 83 =>
+            uart_on_off <= uart_on_off xor '1';
+        when 49 =>
+            uart_mem_offset <= 0;
+--            si_value_pixel <= 0;
+        when 50 =>
+            uart_mem_offset <= 600;
+--            si_value_pixel <= 0;
+        when 51 =>
+            uart_mem_offset <= 1200;
+            si_value_pixel <= 0;
+        when 52 =>
+            uart_mem_offset <= 1800;
+            si_value_pixel <= 0;
+        when 45 =>
+            sig_sign <= '1';
+        when 43 =>
+            sig_sign <= '0';
+        when others =>
+            uart_mem_offset <= 0;    
+    end case;
+    si_state_uart <= 2;
+else
+end if;
+
+if (si_state_uart = 2) then
+    si_uart_byte <= 0;
+    si_state_uart <= 0;
+else
 end if;
 
 -- ####################### Calculate frame uart ########################### 
@@ -462,80 +371,96 @@ end if;
 
 --###################################### uart-frame ############################################
 
-    if ((frame = '1') and (ready_out = '1') and (si_state = 0) and (uart_start_in = '0') and (uart_on_off = '1')) then
-        uart_byte_in <= std_logic_vector(uart_do_xadc(11 downto 4));
+    if ((frame = '1') and (ready_out = '1') and (si_state = 0) and (uart_on_off = '1')) then
+        uart_byte_in <= std_logic_vector(value_ad(7 downto 0));
+        LED(7 downto 0) <= std_logic_vector(value_ad(7 downto 0));
         rotate_value_ad <= uart_value_ad;
-        uart_start_in <= '1';
+        ad_trigger <= ad_trigger xor '1';
         si_state <= 1;
     else
     end if;
     
     if (si_state = 1) then
-        --spi_start <= '1';
-        uart_start_in <= '0';
-        si_state <= 2;
+         ja(0) <= ad_trigger;
+         uart_start_in <= '1';
+         si_state <= 2;
+    else
+    end if;
+    
+    if (si_state = 2) then
+         uart_start_in <= '0';
+         si_state <= 3;
     else
     end if;
      
-    if ((ready_out = '1') and (si_state = 2)) then
-        uart_byte_in(3 downto 0) <= std_logic_vector(uart_do_xadc(15 downto 12));
-        uart_byte_in(7 downto 4) <= x"0";
-        uart_start_in <= '1';
-        si_state <= 3;
+    if ((ready_out = '1') and (si_state = 3)) then
+         uart_byte_in <= std_logic_vector(value_ad(15 downto 8));
+         si_state <= 4;
      else
      end if;
      
-    if (si_state = 3) then
-        --spi_start <= '0';
-        uart_start_in <= '0';
-        si_state <= 4;
+    if (si_state = 4) then
+         uart_start_in <= '1';
+         si_state <= 5;
     else
     end if;
-     
-     if ((ready_out = '1') and (si_state = 4)) then
-        uart_byte_in <= std_logic_vector(value_pixel(7 downto 0));
-        uart_start_in <= '1';
-        si_state <= 5;
-     else
-     end if;
-     
+    
     if (si_state = 5) then
-        uart_start_in <= '0';
-        si_state <= 6;
+         uart_start_in <= '0';
+         si_state <= 6;
     else
     end if;
      
      if ((ready_out = '1') and (si_state = 6)) then
-        uart_byte_in(3 downto 0) <= std_logic_vector(value_pixel(11 downto 8));
-        uart_byte_in(7 downto 4) <= x"0";
-        uart_start_in <= '1';
-        si_state <= 7;
-     else
-     end if;
-          
-     if (si_state = 7) then
-       uart_start_in <= '0';
-       si_state <= 8;
-        
-       value_ad <= (others => '0');
+         uart_byte_in(5 downto 0) <= std_logic_vector(value_pixel(5 downto 0));
+         uart_byte_in(7 downto 6) <= "10";
+         si_state <= 7;
      else
      end if;
      
-     if ((ready_out = '1') and (si_state = 8)) then
-         uart_byte_in <= x"0A";
+    if (si_state = 7) then
          uart_start_in <= '1';
+         si_state <= 8;
+    else
+    end if;
+    
+    if (si_state = 8) then
+         uart_start_in <= '0';
          si_state <= 9;
+    else
+    end if;
+     
+     if ((ready_out = '1') and (si_state = 9)) then
+         uart_byte_in(5 downto 0) <= std_logic_vector(value_pixel(11 downto 6));
+         uart_byte_in(7 downto 6) <= "11";
+         si_state <= 10;
      else
      end if;
      
-     if (si_state = 9) then
+    if (si_state = 10) then
+         uart_start_in <= '1';
+         si_state <= 11;
+    else
+    end if;
+     
+     if (si_state = 11) then
        uart_start_in <= '0';
        si_state <= 0;
+       value_ad <= (others => '0');
      else
      end if;
 
 --##################################### screen update #################################################	
 if (si_state_vga = 0) and (vid_v_visible = '1') and (hc_v = 1) then
+
+--    case si_screen is
+--        when 0 =>
+--            mem_addrb <= std_logic_vector(to_unsigned(vid_screen_v_int,mem_addrb'length));
+--        when 1 =>
+--            mem_addrb <= std_logic_vector(to_unsigned(vid_screen_v_int + 600,mem_addrb'length));
+--        when others =>
+--            mem_addrb <= std_logic_vector(to_unsigned(vid_screen_v_int,mem_addrb'length));
+--    end case;
     mem_addrb <= std_logic_vector(to_unsigned(vid_screen_v_int + mem_offset,mem_addrb'length));
     si_state_vga <= 1;
 else
@@ -581,6 +506,7 @@ if (si_state_vga = 7) then
         if (si_buffer(vid_screen_h_int) = '1') then
             vid_Data <= uart_vid_Data;
         else
+            -- if 0 in mem file, then Black
             vid_Data <= (others => '0');
         end if;
     end if;
@@ -589,20 +515,30 @@ end if;
 
 --##################################### screen rotate #################################################	
 if (si_state_frame = 0) and (hc_v = 1) then
-
     if (vid_v_visible = '1') then
         si_state_frame <= 1;
     else
     end if;
     
-    if (vid_v_visible = '0') and (vid_h_visible = '0') then
+--    if (vid_v_visible = '0') then
+--        si_rotate_screen <= si_rotate_screen_uart;
+--        si_state_frame <= 1;
+--    else
+--    end if;
+    
+    if (vid_v_visible = '0') and  (vid_h_visible = '0') then
         si_rotate_screen <= si_rotate_screen_uart;
         mem_offset <= uart_mem_offset;
-        sig_sign <= uart_sig_sign;
-        integer_rotate_speed <= uart_integer_rotate_speed;
+--        --if (bo_mem_offset_changed = '1') then
+--        if (bo_mem_offset_changed = '1') and (si_state_vga = 7) then
+--            mem_offset <= uart_mem_offset;
+--            si_value_pixel <= 0;
+--            bo_mem_offset_changed <= '0';
+--        else
+--        end if;
+        si_state_frame <= 1;
     else
     end if;
-    
 else
 end if;
 
@@ -611,18 +547,18 @@ if (si_state_frame = 1) and (si_state_vga = 7) then
     when "00" =>
             if (sig_sign = '1') then 
                 if (si_ad_value_sign = '0') and (si_ad_value_picture > 0) then
-                    si_ad_change_buffer <= std_logic_vector(rotate_left(unsigned(si_buffer), si_ad_value_picture*integer_rotate_speed));
+                    si_ad_change_buffer <= std_logic_vector(rotate_left(unsigned(si_buffer), si_ad_value_picture));
                 else
-                    si_ad_change_buffer <= std_logic_vector(rotate_right(unsigned(si_buffer), si_ad_value_picture*integer_rotate_speed));
+                    si_ad_change_buffer <= std_logic_vector(rotate_right(unsigned(si_buffer), si_ad_value_picture));
                 end if;
             else
             end if;
 
             if (sig_sign = '0') then 
                 if (si_ad_value_sign = '0') and (si_ad_value_picture > 0) then
-                    si_ad_change_buffer <= std_logic_vector(rotate_right(unsigned(si_buffer), ((si_ad_value_picture*integer_rotate_speed) / SCALE_FACTOR)));
+                    si_ad_change_buffer <= std_logic_vector(rotate_right(unsigned(si_buffer), si_ad_value_picture));
                 else
-                    si_ad_change_buffer <= std_logic_vector(rotate_left(unsigned(si_buffer), ((si_ad_value_picture*integer_rotate_speed) / SCALE_FACTOR)));
+                    si_ad_change_buffer <= std_logic_vector(rotate_left(unsigned(si_buffer), si_ad_value_picture));
                 end if;
             else
             end if;
@@ -630,14 +566,12 @@ if (si_state_frame = 1) and (si_state_vga = 7) then
         mem_addra <= mem_addrb; 
         si_state_frame <= 2;
     when "01" =>
-        si_ad_change_buffer <= std_logic_vector(rotate_right(unsigned(si_buffer), (integer_rotate_speed / SCALE_FACTOR)));
-        --insert switch buttons
+        si_ad_change_buffer <= std_logic_vector(rotate_right(unsigned(si_buffer), 4));
         --si_ad_change_buffer <= std_logic_vector(rotate_right(unsigned(si_buffer), 10));
         mem_addra <= mem_addrb; 
         si_state_frame <= 2;   
     when "10" =>
-        si_ad_change_buffer <= std_logic_vector(rotate_left(unsigned(si_buffer), (integer_rotate_speed / SCALE_FACTOR)));
-        --insert switch buttons
+        si_ad_change_buffer <= std_logic_vector(rotate_left(unsigned(si_buffer), 4));
         --si_ad_change_buffer <= std_logic_vector(rotate_left(unsigned(si_buffer), 10));
         mem_addra <= mem_addrb; 
         si_state_frame <= 2;  
@@ -693,8 +627,7 @@ end if;
                 si_ad_calc_picture <= to_integer(unsigned(si_ad_value_bit));
                 si_state_ad_frame <= 4;
             else
-                si_ad_calc_picture <= to_integer(unsigned(not si_ad_value_bit)) + 1;
-                --si_ad_calc_picture <= to_integer(unsigned("111111111111" xor si_ad_value_bit)) + 1;
+                si_ad_calc_picture <= to_integer(unsigned("111111111111" xor si_ad_value_bit)) + 1;
                 si_state_ad_frame <= 4;
             end if;
         else
@@ -723,8 +656,7 @@ end if;
         
         if (si_state_ad_frame = 7) then
             if (si_ad_value_sign = '1') then
-                si_ad_value_diff <= to_integer(unsigned(not std_logic_vector(to_unsigned(si_ad_value_diff, 13)))) + 1;
-                --si_ad_value_diff <= to_integer(unsigned("1111111111111" xor std_logic_vector(to_unsigned(si_ad_value_diff,13)))) + 1;
+                si_ad_value_diff <= to_integer(unsigned("1111111111111" xor std_logic_vector(to_unsigned(si_ad_value_diff,13)))) + 1;
             else
             end if; 
         si_state_ad_frame <= 8;       
@@ -732,68 +664,33 @@ end if;
         end if; 
         
         if (si_state_ad_frame = 8) then
-            case si_rotate_screen is
-                when "00" =>
-                    if (si_ad_value_sign = '0') then
-                        si_value_pixel_scaled <= si_value_pixel_scaled - (si_ad_value_picture * integer_rotate_speed);
-                        --si_value_pixel_real <= real(si_value_pixel) - real((si_ad_value_picture*integer_rotate_speed)/10);
-                        --si_value_pixel <= si_value_pixel - si_ad_value_picture*integer_rotate_speed;
-                    else
-                        si_value_pixel_scaled <= si_value_pixel_scaled + (si_ad_value_picture * integer_rotate_speed);
-                        --si_value_pixel_real <= real(si_value_pixel) + real((si_ad_value_picture*integer_rotate_speed)/10);
-                        --si_value_pixel <= si_value_pixel + si_ad_value_picture*integer_rotate_speed;
-                    end if; 
-                    si_state_ad_frame <= 9;
-                when "01" =>
-                    si_value_pixel_scaled <= si_value_pixel_scaled + integer_rotate_speed;
-                    --si_value_pixel_real <= real(si_value_pixel) + real((integer_rotate_speed)/10);
-                    --si_value_pixel <= si_value_pixel + integer_rotate_speed;
-                    si_state_ad_frame <= 9;   
-                when "10" =>
-                    si_value_pixel_scaled <= si_value_pixel_scaled - integer_rotate_speed;
-                    --si_value_pixel_real <= real(si_value_pixel) - real((integer_rotate_speed)/10);
-                    --si_value_pixel <= si_value_pixel - integer_rotate_speed;
-                    si_state_ad_frame <= 9;  
-                when others => 
-                    si_state_ad_frame <= 0;
-            end case;    
+            if (si_ad_value_sign = '0') then
+                si_value_pixel <= si_value_pixel + si_ad_value_picture;
+            else
+                si_value_pixel <= si_value_pixel - si_ad_value_picture;
+            end if; 
+        si_state_ad_frame <= 9;       
         else
         end if; 
         
---        if (si_state_ad_frame = 9) then
---            if (floor(si_value_pixel_real) > 799*) then
---                si_value_pixel <= floor(si_value_pixel_real) - 800;
---            else
---                if (floor(si_value_pixel_real) < 0) then
---                    si_value_pixel <= 800 + floor(si_value_pixel_real);
---                else
---                end if;
---            end if; 
---        si_state_ad_frame <= 10;       
---        else
---        end if;  
-        
---        if (si_state_ad_frame = 10) then
---            value_pixel <= std_logic_vector(to_signed(floor(si_value_pixel_real),12));
---            si_state_ad_frame <= 0;       
---        else
---        end if;    
-
-    if (si_state_ad_frame = 9) then
-        if (si_value_pixel_scaled > 7990) then
-            si_value_pixel_scaled <= si_value_pixel_scaled - 8000;
-        else
-            if (si_value_pixel_scaled < 0) then
-                si_value_pixel_scaled <= 8000 + si_value_pixel_scaled;
-            end if;
-        end if; 
+        if (si_state_ad_frame = 9) then
+            if (si_value_pixel > 799) then
+                si_value_pixel <= si_value_pixel - 800;
+            else
+                if (si_value_pixel < 0) then
+                    si_value_pixel <= 800 + si_value_pixel;
+                else
+                end if;
+            end if; 
         si_state_ad_frame <= 10;       
-    end if;  
-
-    if (si_state_ad_frame = 10) then
-        value_pixel <= std_logic_vector(to_signed((si_value_pixel_scaled / SCALE_FACTOR), 12)); -- Scale down when assigning
-        si_state_ad_frame <= 0;       
-    end if;        
+        else
+        end if;  
+        
+        if (si_state_ad_frame = 10) then
+            value_pixel <= std_logic_vector(to_signed(si_value_pixel,12));
+            si_state_ad_frame <= 0;       
+        else
+        end if;            
 
 end process;        
 end Behavioral;

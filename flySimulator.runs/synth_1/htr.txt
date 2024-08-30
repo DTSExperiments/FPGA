@@ -6,4 +6,4 @@ REM          to be invoked for Vivado to track run status.
 REM Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 REM
 
-vivado -log flySimulator.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source flySimulator.tcl
+vivado -log nexys_hdmi.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source nexys_hdmi.tcl

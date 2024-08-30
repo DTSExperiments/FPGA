@@ -23,7 +23,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log flySimulator.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source flySimulator.tcl" );
+         "-log nexys_hdmi.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source nexys_hdmi.tcl" );
 
 
 

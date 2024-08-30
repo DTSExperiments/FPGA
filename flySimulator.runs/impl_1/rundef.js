@@ -25,7 +25,7 @@ eval( EAInclude(ISEJScriptLib) );
 // pre-commands:
 ISETouchFile( "write_bitstream", "begin" );
 ISEStep( "vivado",
-         "-log flySimulator.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source flySimulator.tcl -notrace" );
+         "-log nexys_hdmi.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source nexys_hdmi.tcl -notrace" );
 
 
 
