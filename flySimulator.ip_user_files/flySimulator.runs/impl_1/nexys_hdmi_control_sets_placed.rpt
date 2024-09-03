@@ -1,0 +1,123 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Tue Sep  3 07:43:22 2024
+| Host         : PC1032450037 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file nexys_hdmi_control_sets_placed.rpt
+| Design       : nexys_hdmi
+| Device       : xc7a200t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    45 |
+|    Minimum number of control sets                        |    45 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   156 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    45 |
+| >= 0 to < 4        |     3 |
+| >= 4 to < 6        |     6 |
+| >= 6 to < 8        |     4 |
+| >= 8 to < 10       |     7 |
+| >= 10 to < 12      |     3 |
+| >= 12 to < 14      |    11 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    11 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              89 |           37 |
+| No           | No                    | Yes                    |               7 |            2 |
+| No           | Yes                   | No                     |              78 |           34 |
+| Yes          | No                    | No                     |            2835 |         1174 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              59 |           19 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++---------------------+------------------------------------------+-------------------------------------------------------------------------------+------------------+----------------+--------------+
+|     Clock Signal    |               Enable Signal              |                                Set/Reset Signal                               | Slice Load Count | Bel Load Count | Bels / Slice |
++---------------------+------------------------------------------+-------------------------------------------------------------------------------+------------------+----------------+--------------+
+|  pll0/inst/clk_out1 |                                          | u0/p_0_in                                                                     |                1 |              1 |         1.00 |
+|  pll0/inst/clk_out1 | p_0_out[0]                               |                                                                               |                1 |              1 |         1.00 |
+|  pll0/inst/clk_out1 |                                          | rgb2dvi/U0/ClockGenInternal.ClockGenX/in0                                     |                1 |              2 |         2.00 |
+|  pll0/inst/clk_out1 | u0/E[0]                                  |                                                                               |                2 |              4 |         2.00 |
+|  pll0/inst/clk_out1 | u0/bitzaehler_snd                        | u0/zustand_snd                                                                |                2 |              4 |         2.00 |
+|  pll0/inst/clk_out1 | vga0/si_state_ad_frame_reg[0]_0[0]       |                                                                               |                2 |              4 |         2.00 |
+|  pll0/inst/clk_out1 |                                          | rgb2dvi/U0/ClockGenInternal.ClockGenX/LockLostReset/SyncAsyncx/oSyncStages[1] |                1 |              5 |         5.00 |
+|  pll0/inst/clk_out1 | uart_vid_Data[23]_i_1_n_0                |                                                                               |                1 |              5 |         5.00 |
+|  pll0/inst/clk_out1 | vga0/FSM_onehot_si_state_frame_reg[1][0] |                                                                               |                1 |              5 |         5.00 |
+|  pll0/inst/clk_out1 | vga0/si_state_vga_reg[2][0]              | vga0/SR[0]                                                                    |                2 |              6 |         3.00 |
+|  pll0/inst/clk_out1 |                                          | rgb2dvi/U0/DataEncoders[0].DataEncoder/pDataOutRaw[9]_i_1_n_0                 |                3 |              6 |         2.00 |
+|  pll0/inst/clk_out1 | uart_mem_offset[10]_i_1_n_0              |                                                                               |                2 |              6 |         3.00 |
+|  pll0/inst/clk_out1 | vga0/uart_on_off_reg                     |                                                                               |                2 |              6 |         3.00 |
+|  pll0/inst/clk_out1 | u0/si_state_uart_reg[1][0]               | si_uart_byte[7]_i_1_n_0                                                       |                2 |              8 |         4.00 |
+|  pll0/inst/clk_out1 | u0/byte_rcv[7]_i_1_n_0                   |                                                                               |                1 |              8 |         8.00 |
+|  pll0/inst/clk_out1 | u0/zustand_snd                           |                                                                               |                2 |              8 |         4.00 |
+|  pll0/inst/clk_out1 | CEP                                      |                                                                               |                3 |              9 |         3.00 |
+|  pll0/inst/clk_out1 |                                          | u0/reg_rcv                                                                    |                3 |              9 |         3.00 |
+|  pll0/inst/clk_out1 | u0/bitdauerzaehler_rcv[8]_i_2_n_0        | u0/bitdauerzaehler_rcv                                                        |                4 |              9 |         2.25 |
+|  pll0/inst/clk_out1 | u0/bitdauerzaehler_snd                   | u0/bitdauerzaehler_snd[8]_i_1_n_0                                             |                2 |              9 |         4.50 |
+|  pll0/inst/clk_out1 | vga0/p_0_in                              | vga0/vc0                                                                      |                4 |             10 |         2.50 |
+|  pll0/inst/clk_out1 |                                          | vga0/p_0_in                                                                   |                4 |             11 |         2.75 |
+|  pll0/inst/clk_out1 |                                          | vga0/vid_screen_v[10]_i_1_n_0                                                 |                4 |             11 |         2.75 |
+|  pll0/inst/clk_out1 | vga0/addrb0                              |                                                                               |                5 |             12 |         2.40 |
+|  pll0/inst/clk_out1 | mem_addra                                |                                                                               |                5 |             12 |         2.40 |
+|  pll0/inst/clk_out1 | vga0/U0[0]                               |                                                                               |                2 |             12 |         6.00 |
+|  pll0/inst/clk_out1 | si_value_pixel[11]_i_1_n_0               |                                                                               |                4 |             12 |         3.00 |
+|  pll0/inst/clk_out1 | value_pixel[11]_i_1_n_0                  |                                                                               |                3 |             12 |         4.00 |
+|  pll0/inst/clk_out1 | value_ad                                 |                                                                               |                3 |             12 |         4.00 |
+|  pll0/inst/clk_out1 | si_ad_value_bit                          |                                                                               |                3 |             13 |         4.33 |
+|  pll0/inst/clk_out1 | si_ad_value_diff[12]_i_1_n_0             |                                                                               |                2 |             13 |         6.50 |
+|  pll0/inst/clk_out1 | vga0/si_state_ad_frame_reg[0][0]         |                                                                               |                4 |             13 |         3.25 |
+|  pll0/inst/clk_out1 | value_ad                                 | value_ad[14]_i_1_n_0                                                          |                3 |             13 |         4.33 |
+|  pll0/inst/clk_out1 | si_ad_value_vector[12]_i_1_n_0           |                                                                               |                3 |             13 |         4.33 |
+|  pll0/inst/clk_out1 |                                          | vga0/vid_screen_h[9]_i_1_n_0                                                  |                8 |             16 |         2.00 |
+|  pll0/inst/clk_out1 | vga0/E[0]                                |                                                                               |                6 |             19 |         3.17 |
+|  pll0/inst/clk_out1 | si_ad_calc_picture[-1111111103]_i_1_n_0  |                                                                               |                6 |             21 |         3.50 |
+|  pll0/inst/clk_out1 | vga0/si_rotate_screen                    |                                                                               |               15 |             22 |         1.47 |
+|  pll0/inst/clk_out1 |                                          | rgb2dvi/U0/DataEncoders[0].DataEncoder/SR[0]                                  |               11 |             24 |         2.18 |
+|  pll0/inst/clk_out1 | enb                                      |                                                                               |               12 |             27 |         2.25 |
+|  pll0/inst/clk_out1 |                                          |                                                                               |               37 |             89 |         2.41 |
+|  pll0/inst/clk_out1 | CEA2                                     |                                                                               |               96 |            166 |         1.73 |
+|  pll0/inst/clk_out1 | mem_dina                                 |                                                                               |              317 |            800 |         2.52 |
+|  pll0/inst/clk_out1 | si_ad_change_buffer                      |                                                                               |              384 |            800 |         2.08 |
+|  pll0/inst/clk_out1 | si_buffer[799]_i_1_n_0                   |                                                                               |              287 |            800 |         2.79 |
++---------------------+------------------------------------------+-------------------------------------------------------------------------------+------------------+----------------+--------------+
+
+
