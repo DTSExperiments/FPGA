@@ -316,7 +316,8 @@ if (si_state_uart = 1) then
         when 68 => 
             uart_vid_Data <= x"00FFFF";
         when 71 =>
-            uart_vid_Data <= x"0000FF";
+            uart_vid_Data <= (others => '1');
+            --uart_vid_Data <= x"0000FF";
         when 87 =>
             --Gray 50%
             uart_vid_Data <= x"7F7F7F";

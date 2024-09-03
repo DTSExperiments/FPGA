@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.runs/impl_1/nexys_hdmi.tcl"
+  variable script "D:/FPGA_Gray/flySimulator.runs/impl_1/nexys_hdmi.tcl"
   variable category "vivado_impl"
 }
 
@@ -141,9 +141,10 @@ start_step write_bitstream
 set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
-  set_param chipscope.maxJobs 3
+  set_param chipscope.maxJobs 6
+  set_param runs.launchOptions { -jobs 12  }
   open_checkpoint nexys_hdmi_routed.dcp
-  set_property webtalk.parent_dir C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.cache/wt [current_project]
+  set_property webtalk.parent_dir D:/FPGA_Gray/flySimulator.cache/wt [current_project]
 set_property TOP nexys_hdmi [current_fileset]
 OPTRACE "read constraints: write_bitstream" START { }
 OPTRACE "read constraints: write_bitstream" END { }

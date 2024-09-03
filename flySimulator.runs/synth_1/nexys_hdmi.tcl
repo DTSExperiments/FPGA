@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.runs/synth_1/nexys_hdmi.tcl"
+  variable script "D:/FPGA_Gray/flySimulator.runs/synth_1/nexys_hdmi.tcl"
   variable category "vivado_synth"
 }
 
@@ -95,40 +95,40 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.cache/wt [current_project]
-set_property parent.project_path C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.xpr [current_project]
+set_property webtalk.parent_dir D:/FPGA_Gray/flySimulator.cache/wt [current_project]
+set_property parent.project_path D:/FPGA_Gray/flySimulator.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property ip_repo_paths c:/Users/LocalAdmin/Documents/GitHub/vivado-library-master [current_project]
+set_property ip_repo_paths d:/vivado-library-master [current_project]
 update_ip_catalog
-set_property ip_output_repo c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.cache/ip [current_project]
+set_property ip_output_repo d:/FPGA_Gray/flySimulator.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-add_files C:/Users/LocalAdmin/Documents/GitHub/FPGA/modified_mem_t_new.coe
-add_files C:/Users/LocalAdmin/Documents/GitHub/FPGA/memPattern.coe
+add_files D:/FPGA_Gray/modified_mem_t_new.coe
+add_files D:/FPGA_Gray/memPattern.coe
 read_vhdl -library xil_defaultlib {
-  C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/flySimulator.vhd
-  C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/rxTxUart.vhd
-  C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/new/vga_800.vhd
+  D:/FPGA_Gray/flySimulator.srcs/sources_1/new/flySimulator.vhd
+  D:/FPGA_Gray/flySimulator.srcs/sources_1/new/rxTxUart.vhd
+  D:/FPGA_Gray/flySimulator.srcs/sources_1/new/vga_800.vhd
 }
-read_ip -quiet C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/ip/xadc_wiz_0/xadc_wiz_0.xci
-set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/xadc_wiz_0/xadc_wiz_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/xadc_wiz_0/xadc_wiz_0.xdc]
+read_ip -quiet D:/FPGA_Gray/flySimulator.srcs/sources_1/ip/xadc_wiz_0/xadc_wiz_0.xci
+set_property used_in_implementation false [get_files -all d:/FPGA_Gray/flySimulator.gen/sources_1/ip/xadc_wiz_0/xadc_wiz_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/FPGA_Gray/flySimulator.gen/sources_1/ip/xadc_wiz_0/xadc_wiz_0.xdc]
 
-read_ip -quiet C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/ip/rgb2dvi_0/rgb2dvi_0.xci
-set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi_ooc.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi_clocks.xdc]
+read_ip -quiet D:/FPGA_Gray/flySimulator.srcs/sources_1/ip/rgb2dvi_0/rgb2dvi_0.xci
+set_property used_in_implementation false [get_files -all d:/FPGA_Gray/flySimulator.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi.xdc]
+set_property used_in_implementation false [get_files -all d:/FPGA_Gray/flySimulator.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi_ooc.xdc]
+set_property used_in_implementation false [get_files -all d:/FPGA_Gray/flySimulator.gen/sources_1/ip/rgb2dvi_0/src/rgb2dvi_clocks.xdc]
 
-read_ip -quiet C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
-set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
-set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
+read_ip -quiet D:/FPGA_Gray/flySimulator.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+set_property used_in_implementation false [get_files -all d:/FPGA_Gray/flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
+set_property used_in_implementation false [get_files -all d:/FPGA_Gray/flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
+set_property used_in_implementation false [get_files -all d:/FPGA_Gray/flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
 
-read_ip -quiet C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
-set_property used_in_implementation false [get_files -all c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_ooc.xdc]
+read_ip -quiet D:/FPGA_Gray/flySimulator.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
+set_property used_in_implementation false [get_files -all d:/FPGA_Gray/flySimulator.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -139,8 +139,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/constrs_1/new/master.xdc
-set_property used_in_implementation false [get_files C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/constrs_1/new/master.xdc]
+read_xdc D:/FPGA_Gray/flySimulator.srcs/constrs_1/new/master.xdc
+set_property used_in_implementation false [get_files D:/FPGA_Gray/flySimulator.srcs/constrs_1/new/master.xdc]
 
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]

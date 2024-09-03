@@ -1,7 +1,7 @@
-set_property SRC_FILE_INFO {cfile:c:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc rfile:../../../flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc id:1 order:EARLY scoped_inst:pll0/inst} [current_design]
-set_property SRC_FILE_INFO {cfile:C:/Users/LocalAdmin/Documents/GitHub/FPGA/flySimulator.srcs/constrs_1/new/master.xdc rfile:../../../flySimulator.srcs/constrs_1/new/master.xdc id:2} [current_design]
+set_property SRC_FILE_INFO {cfile:d:/FPGA_Gray/flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc rfile:../../../flySimulator.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc id:1 order:EARLY scoped_inst:pll0/inst} [current_design]
+set_property SRC_FILE_INFO {cfile:D:/FPGA_Gray/flySimulator.srcs/constrs_1/new/master.xdc rfile:../../../flySimulator.srcs/constrs_1/new/master.xdc id:2} [current_design]
 current_instance pll0/inst
-set_property src_info {type:SCOPED_XDC file:1 line:57 export:INPUT save:INPUT read:READ} [current_design]
+set_property src_info {type:SCOPED_XDC file:1 line:54 export:INPUT save:INPUT read:READ} [current_design]
 set_input_jitter [get_clocks -of_objects [get_ports clk_in1]] 0.100
 current_instance
 set_property src_info {type:XDC file:2 line:8 export:INPUT save:INPUT read:READ} [current_design]

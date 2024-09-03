@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a200tsbg484-1" LaunchTime="1725045398">
+<GenRun Id="impl_1" LaunchPart="xc7a200tsbg484-1" LaunchTime="1725350922">
   <File Type="ROUTE-PWR" Name="nexys_hdmi_power_routed.rpt"/>
   <File Type="PA-TCL" Name="nexys_hdmi.tcl"/>
+  <File Type="ROUTE-PWR-SUM" Name="nexys_hdmi_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="nexys_hdmi_reports.tcl"/>
+  <File Type="OPT-RQA-PB" Name="nexys_hdmi_rqa_opted.pb"/>
   <File Type="BITSTR-MMI" Name="nexys_hdmi.mmi"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="nexys_hdmi_methodology_drc_opted.rpt"/>
   <File Type="INIT-TIMING" Name="nexys_hdmi_timing_summary_init.rpt"/>
-  <File Type="ROUTE-PWR-SUM" Name="nexys_hdmi_power_summary_routed.pb"/>
-  <File Type="REPORTS-TCL" Name="nexys_hdmi_reports.tcl"/>
   <File Type="OPT-TIMING" Name="nexys_hdmi_timing_summary_opted.rpt"/>
   <File Type="OPT-DCP" Name="nexys_hdmi_opt.dcp"/>
   <File Type="OPT-DRC" Name="nexys_hdmi_drc_opted.rpt"/>
@@ -24,6 +25,8 @@
   <File Type="PLACE-PRE-SIMILARITY" Name="nexys_hdmi_incremental_reuse_pre_placed.rpt"/>
   <File Type="BG-BIN" Name="nexys_hdmi.bin"/>
   <File Type="PLACE-TIMING" Name="nexys_hdmi_timing_summary_placed.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="nexys_hdmi_power_routed.rpx"/>
+  <File Type="PLACE-RQA-PB" Name="nexys_hdmi_rqa_placed.pb"/>
   <File Type="POSTPLACE-PWROPT-DCP" Name="nexys_hdmi_postplace_pwropt.dcp"/>
   <File Type="BITSTR-MSK" Name="nexys_hdmi.msk"/>
   <File Type="POSTPLACE-PWROPT-TIMING" Name="nexys_hdmi_timing_summary_postplace_pwropted.rpt"/>
@@ -40,7 +43,7 @@
   <File Type="ROUTE-METHODOLOGY-DRC" Name="nexys_hdmi_methodology_drc_routed.rpt"/>
   <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="nexys_hdmi_methodology_drc_routed.rpx"/>
   <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="nexys_hdmi_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-PWR-RPX" Name="nexys_hdmi_power_routed.rpx"/>
+  <File Type="ROUTE-RQS-PB" Name="nexys_hdmi_rqs_routed.pb"/>
   <File Type="ROUTE-STATUS" Name="nexys_hdmi_route_status.rpt"/>
   <File Type="ROUTE-STATUS-PB" Name="nexys_hdmi_route_status.pb"/>
   <File Type="ROUTE-TIMINGSUMMARY" Name="nexys_hdmi_timing_summary_routed.rpt"/>
@@ -63,6 +66,8 @@
   <File Type="BITSTR-NKY" Name="nexys_hdmi.nky"/>
   <File Type="BITSTR-BMM" Name="nexys_hdmi_bd.bmm"/>
   <File Type="PDI-FILE" Name="nexys_hdmi.pdi"/>
+  <File Type="BOOT-PDI-FILE" Name="nexys_hdmi_boot.pdi"/>
+  <File Type="PL-PDI-FILE" Name="nexys_hdmi_pld.pdi"/>
   <File Type="RCFI_FILE" Name="nexys_hdmi.rcfi"/>
   <File Type="CFI_FILE" Name="nexys_hdmi.cfi"/>
   <File Type="RNPI_FILE" Name="nexys_hdmi.rnpi"/>
@@ -144,7 +149,7 @@
       <Option Name="TopModule" Val="nexys_hdmi"/>
     </Config>
   </FileSet>
-  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
     <Filter Type="Constrs"/>
     <File Path="$PSRCDIR/constrs_1/new/master.xdc">
       <FileInfo>
@@ -156,16 +161,14 @@
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>
   </FileSet>
-  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1" RelGenDir="$PGENDIR/utils_1">
     <Filter Type="Utils"/>
     <Config>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020">
-      <Desc>Default settings for Implementation.</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
     <Step Id="init_design"/>
     <Step Id="opt_design"/>
     <Step Id="power_opt_design"/>
